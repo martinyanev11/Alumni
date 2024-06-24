@@ -1,0 +1,5 @@
+﻿Database layer for the project.
+
+1. Application DB Context
+2. Data seeding
+3. Entity Configuration files

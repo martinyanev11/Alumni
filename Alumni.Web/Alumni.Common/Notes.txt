@@ -1,0 +1,1 @@
+﻿Project common fuctionality or constants to be created here.

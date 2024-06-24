@@ -1,4 +1,4 @@
-namespace Alumni.Web.Models
+namespace Alumni.Web.ViewModels
 {
     public class ErrorViewModel
     {
