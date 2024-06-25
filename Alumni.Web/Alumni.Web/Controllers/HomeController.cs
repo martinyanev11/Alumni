@@ -1,4 +1,4 @@
-using Alumni.Web.Models;
+using Alumni.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

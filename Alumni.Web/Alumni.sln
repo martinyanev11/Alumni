@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alumni.Web", "Alumni.Web\Alumni.Web.csproj", "{77183FB0-4AEB-4125-BBAF-023479BC2211}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Web", "Alumni.Web\Alumni.Web.csproj", "{77183FB0-4AEB-4125-BBAF-023479BC2211}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D48E627-E575-46B4-B80C-7A4E4BF9A91F} = {2D48E627-E575-46B4-B80C-7A4E4BF9A91F}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alumni.Data", "Alumni.Data\Alumni.Data.csproj", "{2D48E627-E575-46B4-B80C-7A4E4BF9A91F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Data", "Alumni.Data\Alumni.Data.csproj", "{2D48E627-E575-46B4-B80C-7A4E4BF9A91F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BBA0D5D3-C083-40DF-9C5A-2A33E9587085} = {BBA0D5D3-C083-40DF-9C5A-2A33E9587085}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alumni.Data.Models", "Alumni.Data.Models\Alumni.Data.Models.csproj", "{BBA0D5D3-C083-40DF-9C5A-2A33E9587085}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Data.Models", "Alumni.Data.Models\Alumni.Data.Models.csproj", "{BBA0D5D3-C083-40DF-9C5A-2A33E9587085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alumni.Services", "Alumni.Services\Alumni.Services.csproj", "{EFDE8060-54B7-48F3-AF28-5959D454557F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Services", "Alumni.Services\Alumni.Services.csproj", "{EFDE8060-54B7-48F3-AF28-5959D454557F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alumni.Common", "Alumni.Common\Alumni.Common.csproj", "{2D00CD6F-E443-47C2-A12A-1C0DCA73CE04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Common", "Alumni.Common\Alumni.Common.csproj", "{2D00CD6F-E443-47C2-A12A-1C0DCA73CE04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
