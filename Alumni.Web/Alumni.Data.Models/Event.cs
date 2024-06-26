@@ -21,7 +21,7 @@ namespace Alumni.Data.Models
 
 
         [Required]
-        public int EventId { get; set; }
+        public string EventId { get; set; } = null!;
 
         [Required]
         public string Title { get; set; } = null!;
@@ -35,11 +35,6 @@ namespace Alumni.Data.Models
         [Required]
         public DateTime EndDateTime { get; set; }
 
-
-        [Required]
-        [ForeignKey(nameof(Admin))]
-        public string AdminId { get; set; } = null!;
-        public Admin Admin { get; set; } = null!;
 
         public List<UserEvent>? EventUsers { get; set; }
 

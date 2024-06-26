@@ -20,7 +20,7 @@ namespace Alumni.Data.Models
         public bool IsDeleted { get; set; }
 
         [Required]
-        public int PostId { get; set; }
+        public string PostId { get; set; } = null!;
 
         [Required]
         public string Title { get; set; } = null!;

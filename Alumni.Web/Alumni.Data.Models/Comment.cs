@@ -21,7 +21,7 @@ namespace Alumni.Data.Models
 
 
         [Required]
-        public int CommentId { get; set; }
+        public string CommentId { get; set; } = null!;
 
         [Required]
         public string Contents { get; set; } = null!;
@@ -29,7 +29,7 @@ namespace Alumni.Data.Models
 
         [Required]
         [ForeignKey(nameof(Post))]
-        public int PostId { get; set; }
+        public string PostId { get; set; } = null!;
 
         [Required]
         public Post Post { get; set; } = null!;
@@ -38,8 +38,6 @@ namespace Alumni.Data.Models
         public string? UserId { get; set; }
         public User? User { get; set; }
 
-        [ForeignKey(nameof(Admin))]
-        public string? AdminId { get; set; }
-        public Admin? Admin { get; set; }
+        
     }
 }

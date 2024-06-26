@@ -21,7 +21,7 @@ namespace Alumni.Data.Models
 
 
         [Required]
-        public int CharityDonationId { get; set; }
+        public string CharityDonationId { get; set; } = null!;
 
         [Required]
         [Column(TypeName = "decimal(12,3)")]
@@ -32,7 +32,7 @@ namespace Alumni.Data.Models
         public decimal CurrentlyRaisedDonations { get; set; }
 
 
-        public IEnumerable<User>? Donators { get; set; }
+        public IEnumerable<CharityDonationUser>? Donators { get; set; }
 
     }
 }

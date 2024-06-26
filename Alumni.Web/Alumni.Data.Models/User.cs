@@ -17,6 +17,6 @@ namespace Alumni.Data.Models
         public IEnumerable<Post>? Posts { get; set; }
         public IEnumerable<Comment>? Comments { get; set; }
         public IEnumerable<UserEvent>? UserEvents { get; set; }
-        public IEnumerable<CharityDonation>? CharityDonationsContributed { get; set; }
+        public IEnumerable<CharityDonationUser>? CharityDonationsContributed { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Alumni.Data.Models
 
         [Required]
         [ForeignKey(nameof(Event))]
-        public int EventId { get; set; }
+        public string EventId { get; set; } = null!;
         [Required]
         public Event Event { get; set; } = null!;
     }

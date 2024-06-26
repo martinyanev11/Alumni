@@ -20,7 +20,7 @@ namespace Alumni.Data.Models
         public bool IsDeleted { get; set; }
 
         [Required]
-        public int NewsId { get; set; }
+        public string NewsId { get; set; } = null!;
 
         [Required]
         public string Title { get; set; } = null!;
@@ -28,10 +28,6 @@ namespace Alumni.Data.Models
         [Required]
         public string Contents { get; set; } = null!;
 
-        [Required]
-        [ForeignKey(nameof(Admin))]
-        public string AdminId { get; set; } = null!;
-        public Admin Admin { get; set; } = null!;
 
         public IEnumerable<Comment>? Comments { get; set; }
     }
