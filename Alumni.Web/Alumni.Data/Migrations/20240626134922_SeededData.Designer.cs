@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni.Data.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    [Migration("20240626082139_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240626134922_SeededData")]
+    partial class SeededData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,35 @@ namespace Alumni.Data.Migrations
                     b.HasKey("CharityDonationId");
 
                     b.ToTable("CharityDonations");
+
+                    b.HasData(
+                        new
+                        {
+                            CharityDonationId = "1231b7fa-514e-4e23-9f25-2187dedf7bc6",
+                            CreatedOn = new DateTime(2024, 3, 12, 8, 40, 56, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 4396m,
+                            DonationGoal = 6000m,
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 25, 20, 24, 7, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CharityDonationId = "b1493552-b550-403d-8788-a346a9739d3e",
+                            CreatedOn = new DateTime(2024, 1, 24, 17, 32, 2, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 5078m,
+                            DonationGoal = 5000m,
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5730)
+                        },
+                        new
+                        {
+                            CharityDonationId = "2dc40d6f-801e-4f8e-83ff-0c573022e9be",
+                            CreatedOn = new DateTime(2024, 6, 6, 14, 20, 37, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 34m,
+                            DonationGoal = 6000m,
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 7, 16, 28, 31, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.CharityDonationUser", b =>
@@ -135,6 +164,41 @@ namespace Alumni.Data.Migrations
                     b.HasKey("EventId");
 
                     b.ToTable("Events");
+
+                    b.HasData(
+                        new
+                        {
+                            EventId = "2ccab0d1-a47d-4caf-adb4-04d70bb839bd",
+                            Contents = "The class of 2016 is going to have a meeting at the local park. There`s going to be food, but you can bring some.",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5801),
+                            EndDateTime = new DateTime(2024, 5, 2, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5803),
+                            StartDateTime = new DateTime(2024, 5, 2, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2016 class"
+                        },
+                        new
+                        {
+                            EventId = "8b0d26ec-462e-4f50-afdb-1c8dd9ed4428",
+                            Contents = "The class of 2011 is going to have a meeting at the local beach.",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5807),
+                            EndDateTime = new DateTime(2024, 7, 5, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5808),
+                            StartDateTime = new DateTime(2024, 7, 5, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2011 class"
+                        },
+                        new
+                        {
+                            EventId = "c0a29077-7315-46f3-b80d-edb25d96a00b",
+                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5838),
+                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5839),
+                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2009 class"
+                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.News", b =>
@@ -162,6 +226,17 @@ namespace Alumni.Data.Migrations
                     b.HasKey("NewsId");
 
                     b.ToTable("News");
+
+                    b.HasData(
+                        new
+                        {
+                            NewsId = "cc8e221f-08de-4cec-9278-c91a20ef6f97",
+                            Contents = "Test seed",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5774),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5775),
+                            Title = "News"
+                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.Post", b =>
@@ -194,6 +269,68 @@ namespace Alumni.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+
+                    b.HasData(
+                        new
+                        {
+                            PostId = "409b3a76-a767-47e6-a307-ed0d967a37c2",
+                            Contents = "On the 23.08.24 the alumni of Softuni Buditel will gather for a tea party in South park",
+                            CreatedOn = new DateTime(2024, 6, 25, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5562),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5564),
+                            Title = "Alumni gathering",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            PostId = "2968a80b-50f4-4487-8de2-e404735c75b7",
+                            Contents = "My master is a guy who likes to wear black and fights crime",
+                            CreatedOn = new DateTime(2024, 6, 24, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5585),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 24, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5587),
+                            Title = "Just a random post",
+                            UserId = "123"
+                        },
+                        new
+                        {
+                            PostId = "9385f943-fe19-4231-8326-cbac47d508bb",
+                            Contents = "I am prince Ferdinand, the first tzar of the new Bulgaria",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5608),
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5610),
+                            Title = "Listen to your tzar",
+                            UserId = "102"
+                        },
+                        new
+                        {
+                            PostId = "8033dea4-adfc-4241-8bbb-e3445d46a050",
+                            Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5626),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5627),
+                            Title = "Test",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            PostId = "229dd424-c2a3-46c9-a3ee-a7f97819b112",
+                            Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5643),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5645),
+                            Title = "Test",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            PostId = "953038c8-25c7-461e-9dfd-63b4d99c2b1e",
+                            Contents = "Hello everyone! I hope you're doing well. I'm thrilled to announce the launch of our new alumni mentorship program.This initiative aims to connect recent graduates with seasoned professionals.It's a fantastic opportunity to share your knowledge, give back to our community, and guide the next generation. I look forward to seeing many of you participate!",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5663),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5665),
+                            Title = "Test",
+                            UserId = "1"
+                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.User", b =>
@@ -268,6 +405,53 @@ namespace Alumni.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "27b79543-4841-47b3-9218-2b54c56ed07b",
+                            CreatedOn = new DateTime(2024, 6, 18, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5420),
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 18, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5469),
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "77926f90-b09b-42ad-95ae-537e110f11f4",
+                            TwoFactorEnabled = false,
+                            UserName = "Vasko Bilkata"
+                        },
+                        new
+                        {
+                            Id = "123",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ea13d12f-48d7-4702-a2a3-e1bfba33aee7",
+                            CreatedOn = new DateTime(2024, 6, 22, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5514),
+                            EmailConfirmed = false,
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5515),
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9c30f54a-e995-4cd3-b79b-8f9bf97ea9a3",
+                            TwoFactorEnabled = false,
+                            UserName = "Michael Caine"
+                        },
+                        new
+                        {
+                            Id = "102",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "81a13adf-1af5-4935-828f-e4204b235ef1",
+                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5536),
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 30, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5538),
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b49adf16-28d3-4343-ab82-aa77efc318da",
+                            TwoFactorEnabled = false,
+                            UserName = "Prince Ferdinand"
+                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.UserEvent", b =>
