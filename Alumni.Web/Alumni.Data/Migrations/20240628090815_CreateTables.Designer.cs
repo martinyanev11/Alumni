@@ -4,6 +4,7 @@ using Alumni.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni.Data.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    partial class AlumniDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240628090815_CreateTables")]
+    partial class CreateTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,85 +137,6 @@ namespace Alumni.Data.Migrations
                     b.HasKey("EventId");
 
                     b.ToTable("Events");
-
-                    b.HasData(
-                        new
-                        {
-                            EventId = new Guid("87c281f4-5052-47a5-a6f4-75c9741663ef"),
-                            Contents = "The class of 2016 is going to have a meeting at the local park. There`s going to be food, but you can bring some.",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndDateTime = new DateTime(2024, 5, 2, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDateTime = new DateTime(2024, 5, 2, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2016 class"
-                        },
-                        new
-                        {
-                            EventId = new Guid("541e7f5d-4016-474e-acd2-2f30ecd9a446"),
-                            Contents = "The class of 2011 is going to have a meeting at the local beach.",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndDateTime = new DateTime(2024, 7, 5, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDateTime = new DateTime(2024, 7, 5, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2011 class"
-                        },
-                        new
-                        {
-                            EventId = new Guid("9a1172e2-e2e5-44fd-92e6-285c1154e8dc"),
-                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2009 class"
-                        },
-                        new
-                        {
-                            EventId = new Guid("832388e9-e1d9-4878-9299-273129c9f247"),
-                            Contents = "The class of 2003 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8914),
-                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = true,
-                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8917),
-                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2003 class"
-                        },
-                        new
-                        {
-                            EventId = new Guid("74a8ad71-9425-4115-8b44-55cc94b13a89"),
-                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8920),
-                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8922),
-                            StartDateTime = new DateTime(2010, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2009 class"
-                        },
-                        new
-                        {
-                            EventId = new Guid("8f0a57e7-afe3-4648-8efa-9a977602bee0"),
-                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2025, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8926),
-                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2009 class"
-                        },
-                        new
-                        {
-                            EventId = new Guid("257cb7ad-df19-4cac-a009-f68eeb305afa"),
-                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2023, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2022, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Meeting - 2009 class"
-                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.News", b =>
@@ -241,35 +165,6 @@ namespace Alumni.Data.Migrations
                     b.HasKey("NewsId");
 
                     b.ToTable("News");
-
-                    b.HasData(
-                        new
-                        {
-                            NewsId = new Guid("85183070-d0af-41a1-9b3b-95d0073995eb"),
-                            Contents = "Test seed",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "News"
-                        },
-                        new
-                        {
-                            NewsId = new Guid("fb8f1f7a-8853-4bed-8008-a17ae2a3be3f"),
-                            Contents = "funny haha get shmucked",
-                            CreatedOn = new DateTime(2024, 5, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8594),
-                            IsDeleted = true,
-                            LastEdited = new DateTime(2024, 9, 11, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8598),
-                            Title = "file"
-                        },
-                        new
-                        {
-                            NewsId = new Guid("31dedd8d-0dc7-455a-955a-14d7d5e9320f"),
-                            Contents = "f k y u d b j g d",
-                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8602),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8604),
-                            Title = "News"
-                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.Post", b =>
@@ -303,68 +198,6 @@ namespace Alumni.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
-
-                    b.HasData(
-                        new
-                        {
-                            PostId = new Guid("ecfccb98-75a2-49ee-910d-e5a5ec44ae5b"),
-                            Contents = "On the 23.08.24 the alumni of Softuni Buditel will gather for a tea party in South park",
-                            CreatedOn = new DateTime(2024, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Alumni gathering",
-                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
-                        },
-                        new
-                        {
-                            PostId = new Guid("7463e718-280e-47b6-93b3-f6d629e26a9d"),
-                            Contents = "My master is a guy who likes to wear black and fights crime",
-                            CreatedOn = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Just a random post",
-                            UserId = new Guid("30913bf8-4000-4809-801e-764de3136c0e")
-                        },
-                        new
-                        {
-                            PostId = new Guid("ee03701f-f3c6-4872-8dc8-800a99947a9d"),
-                            Contents = "I am prince Ferdinand, the first tzar of the new Bulgaria",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = true,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Listen to your tzar",
-                            UserId = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918")
-                        },
-                        new
-                        {
-                            PostId = new Guid("2fae760d-6a45-45ed-ae78-e4451ebf47f8"),
-                            Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Test",
-                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
-                        },
-                        new
-                        {
-                            PostId = new Guid("22a984ee-76a2-4c73-b0bf-7ac5e30ccc1b"),
-                            Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Test",
-                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
-                        },
-                        new
-                        {
-                            PostId = new Guid("62c9dd2b-1ad2-4089-a157-c358c0422884"),
-                            Contents = "Hello everyone! I hope you're doing well. I'm thrilled to announce the launch of our new alumni mentorship program.This initiative aims to connect recent graduates with seasoned professionals.It's a fantastic opportunity to share your knowledge, give back to our community, and guide the next generation. I look forward to seeing many of you participate!",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Test",
-                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
-                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.User", b =>
@@ -440,78 +273,6 @@ namespace Alumni.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "3365c379-ae79-4841-93bb-9ede0e6c750b",
-                            CreatedOn = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmailConfirmed = false,
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "Vasko Bilkata"
-                        },
-                        new
-                        {
-                            Id = new Guid("30913bf8-4000-4809-801e-764de3136c0e"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "bbb8a124-ff9f-4146-b1ff-c1a1848f9300",
-                            CreatedOn = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmailConfirmed = false,
-                            IsDeleted = true,
-                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "Michael Caine"
-                        },
-                        new
-                        {
-                            Id = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "24826760-fd68-4811-ac0d-4c49f1ff0726",
-                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmailConfirmed = false,
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "Prince Ferdinand"
-                        },
-                        new
-                        {
-                            Id = new Guid("b6a98fd4-b8db-4566-ad8c-d7c49f3bd2db"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b07f1e43-7bd6-4c88-98a7-2baf55cd25bc",
-                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8275),
-                            EmailConfirmed = false,
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 5, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8317),
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "Burxh califchar"
-                        },
-                        new
-                        {
-                            Id = new Guid("6609e8af-abbe-4472-a1ff-ab5fdfb92f80"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "1114fb0c-d3f2-4994-aebc-707f84e270e0",
-                            CreatedOn = new DateTime(2024, 7, 11, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8325),
-                            EmailConfirmed = false,
-                            IsDeleted = true,
-                            LastEdited = new DateTime(2024, 7, 12, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8327),
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "gazelle trueman"
-                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.UserEvent", b =>

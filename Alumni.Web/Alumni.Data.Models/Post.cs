@@ -10,6 +10,13 @@ namespace Alumni.Data.Models
 {
     public class Post
     {
+        public Post()
+        {
+            PostId = new Guid();
+            Title = null!;
+            Contents = null!;
+            UserId = new Guid();
+        }
         [Required]
         public DateTime CreatedOn { get; set; }
 
@@ -20,23 +27,23 @@ namespace Alumni.Data.Models
         public bool IsDeleted { get; set; }
 
         [Required]
-        public string PostId { get; set; } = null!;
+        public Guid PostId { get; set; }
 
         [Required]
-        public string Title { get; set; } = null!;
+        public string Title { get; set; }
 
         [Required]
-        public string Contents { get; set; } = null!;
+        public string Contents { get; set; }
 
         [ForeignKey(nameof(User))]
-        public string? UserId { get; set; }
+        public Guid UserId { get; set; }
         public User? User { get; set; }
 
         /*[ForeignKey(nameof(Admin))]
         public string? AdminId { get; set; }
         public Admin? Admin { get; set; }
 */
-        public IEnumerable<Comment>? Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 
     }
 }

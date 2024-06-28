@@ -10,6 +10,12 @@ namespace Alumni.Data.Models
 {
     public class Event
     {
+        public Event()
+        {
+            EventId = new Guid();
+            Title = null!;
+            Contents = null!;
+        }
         [Required]
         public DateTime CreatedOn { get; set; }
 
@@ -19,15 +25,14 @@ namespace Alumni.Data.Models
         [Required]
         public bool IsDeleted { get; set; }
 
+        [Required]
+        public Guid EventId { get; set; }
 
         [Required]
-        public string EventId { get; set; } = null!;
+        public string Title { get; set; }
 
         [Required]
-        public string Title { get; set; } = null!;
-
-        [Required]
-        public string Contents { get; set; } = null!;
+        public string Contents { get; set; }
 
         [Required]
         public DateTime StartDateTime { get; set; }
@@ -35,8 +40,7 @@ namespace Alumni.Data.Models
         [Required]
         public DateTime EndDateTime { get; set; }
 
-
-        public List<UserEvent>? EventUsers { get; set; }
+        public ICollection<UserEvent> EventUsers { get; set; } = new HashSet<UserEvent>();
 
     }
 }

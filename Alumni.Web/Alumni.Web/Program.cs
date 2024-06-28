@@ -1,4 +1,5 @@
 using Alumni.Data.Data;
+using Alumni.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,8 @@ builder.Services.AddDbContext<AlumniDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<AlumniDbContext>();
 builder.Services.AddControllersWithViews();
 

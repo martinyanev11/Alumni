@@ -10,16 +10,23 @@ namespace Alumni.Data.Models
 {
     public class UserEvent
     {
+        public UserEvent()
+        {
+            UserId = new Guid();
+            User = null!;
+            EventId = new Guid();
+            Event = null!;
+        }
         [Required]
         [ForeignKey(nameof(User))]
-        public string UserId { get; set; } = null!;
+        public Guid UserId { get; set; }
         [Required]
-        public User User { get; set; } = null!;
+        public User User { get; set; }
 
         [Required]
         [ForeignKey(nameof(Event))]
-        public string EventId { get; set; } = null!;
+        public Guid EventId { get; set; }
         [Required]
-        public Event Event { get; set; } = null!;
+        public Event Event { get; set; }
     }
 }

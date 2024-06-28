@@ -10,16 +10,24 @@ namespace Alumni.Data.Models
 {
     public class CharityDonationUser
     {
+        public CharityDonationUser()
+        {
+            CharityDonationId = new Guid();
+            CharityDonation = null!;
+            UserId = new Guid();
+            User = null!;
+
+        }
         [Required]
         [ForeignKey(nameof(CharityDonation))]
-        public string CharityDonationId { get; set; } = null!;
+        public Guid CharityDonationId { get; set; }
         [Required]
-        public CharityDonation CharityDonation { get; set; } = null!;
+        public CharityDonation CharityDonation { get; set; }
 
         [Required]
         [ForeignKey(nameof(User))]
-        public string UserId { get; set; } = null!;
+        public Guid UserId { get; set; }
         [Required]
-        public User User { get; set; } = null!;
+        public User User { get; set; }
     }
 }

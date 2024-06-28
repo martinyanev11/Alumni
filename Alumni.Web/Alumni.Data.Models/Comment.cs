@@ -10,6 +10,14 @@ namespace Alumni.Data.Models
 {
     public class Comment
     {
+        public Comment()
+        {
+            CommentId = new Guid();
+            Contents = null!;
+            PostId = new Guid();
+            Post = null!;
+            UserId = new Guid();
+        }
         [Required]
         public DateTime CreatedOn { get; set; }
 
@@ -21,23 +29,23 @@ namespace Alumni.Data.Models
 
 
         [Required]
-        public string CommentId { get; set; } = null!;
+        public Guid CommentId { get; set; }
 
         [Required]
-        public string Contents { get; set; } = null!;
+        public string Contents { get; set; }
 
 
         [Required]
         [ForeignKey(nameof(Post))]
-        public string PostId { get; set; } = null!;
+        public Guid PostId { get; set; }
 
         [Required]
-        public Post Post { get; set; } = null!;
+        public Post Post { get; set; }
 
         [ForeignKey(nameof(User))]
-        public string? UserId { get; set; }
+        public Guid UserId { get; set; }
         public User? User { get; set; }
 
-        
+
     }
 }

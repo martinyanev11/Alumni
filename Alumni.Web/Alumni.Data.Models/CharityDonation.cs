@@ -10,6 +10,11 @@ namespace Alumni.Data.Models
 {
     public class CharityDonation
     {
+        public CharityDonation()
+        {
+            CharityDonationId = new Guid();
+            Donators = new HashSet<CharityDonationUser>();
+        }
         [Required]
         public DateTime CreatedOn { get; set; }
 
@@ -21,7 +26,7 @@ namespace Alumni.Data.Models
 
 
         [Required]
-        public string CharityDonationId { get; set; } = null!;
+        public Guid CharityDonationId { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(12,3)")]
@@ -31,8 +36,7 @@ namespace Alumni.Data.Models
         [Column(TypeName = "decimal(12,3)")]
         public decimal CurrentlyRaisedDonations { get; set; }
 
-
-        public IEnumerable<CharityDonationUser>? Donators { get; set; }
+        public IEnumerable<CharityDonationUser> Donators { get; set; }
 
     }
 }

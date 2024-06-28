@@ -10,6 +10,12 @@ namespace Alumni.Data.Models
 {
     public class News
     {
+        public News()
+        {
+            NewsId = new Guid();
+            Title = null!;
+            Contents = null!;
+        }
         [Required]
         public DateTime CreatedOn { get; set; }
 
@@ -20,15 +26,15 @@ namespace Alumni.Data.Models
         public bool IsDeleted { get; set; }
 
         [Required]
-        public string NewsId { get; set; } = null!;
+        public Guid NewsId { get; set; }
 
         [Required]
-        public string Title { get; set; } = null!;
+        public string Title { get; set; }
 
         [Required]
-        public string Contents { get; set; } = null!;
+        public string Contents { get; set; }
 
 
-        public IEnumerable<Comment>? Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }

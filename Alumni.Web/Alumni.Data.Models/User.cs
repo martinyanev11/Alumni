@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Alumni.Data.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<Guid>
     {
         [Required]
-        public DateTime CreatedOn {  get; set; }
+        public DateTime CreatedOn { get; set; }
 
         [Required]
         public bool IsDeleted { get; set; }
@@ -14,9 +14,9 @@ namespace Alumni.Data.Models
         [Required]
         public DateTime LastEdited { get; set; }
 
-        public IEnumerable<Post>? Posts { get; set; }
-        public IEnumerable<Comment>? Comments { get; set; }
-        public IEnumerable<UserEvent>? UserEvents { get; set; }
-        public IEnumerable<CharityDonationUser>? CharityDonationsContributed { get; set; }
+        public ICollection<Post> Posts { get; set; } = new HashSet<Post>();
+        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public ICollection<UserEvent> UserEvents { get; set; } = new HashSet<UserEvent>();
+        public ICollection<CharityDonationUser> CharityDonationsContributed { get; set; } = new HashSet<CharityDonationUser>();
     }
 }

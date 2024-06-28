@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni.Data.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    [Migration("20240626134922_SeededData")]
-    partial class SeededData
+    [Migration("20240628091451_Seeding")]
+    partial class Seeding
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,8 +27,9 @@ namespace Alumni.Data.Migrations
 
             modelBuilder.Entity("Alumni.Data.Models.CharityDonation", b =>
                 {
-                    b.Property<string>("CharityDonationId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("CharityDonationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -48,44 +49,15 @@ namespace Alumni.Data.Migrations
                     b.HasKey("CharityDonationId");
 
                     b.ToTable("CharityDonations");
-
-                    b.HasData(
-                        new
-                        {
-                            CharityDonationId = "1231b7fa-514e-4e23-9f25-2187dedf7bc6",
-                            CreatedOn = new DateTime(2024, 3, 12, 8, 40, 56, 0, DateTimeKind.Unspecified),
-                            CurrentlyRaisedDonations = 4396m,
-                            DonationGoal = 6000m,
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 25, 20, 24, 7, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CharityDonationId = "b1493552-b550-403d-8788-a346a9739d3e",
-                            CreatedOn = new DateTime(2024, 1, 24, 17, 32, 2, 0, DateTimeKind.Unspecified),
-                            CurrentlyRaisedDonations = 5078m,
-                            DonationGoal = 5000m,
-                            IsDeleted = true,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5730)
-                        },
-                        new
-                        {
-                            CharityDonationId = "2dc40d6f-801e-4f8e-83ff-0c573022e9be",
-                            CreatedOn = new DateTime(2024, 6, 6, 14, 20, 37, 0, DateTimeKind.Unspecified),
-                            CurrentlyRaisedDonations = 34m,
-                            DonationGoal = 6000m,
-                            IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 7, 16, 28, 31, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.CharityDonationUser", b =>
                 {
-                    b.Property<string>("CharityDonationId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("CharityDonationId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CharityDonationId", "UserId");
 
@@ -96,8 +68,9 @@ namespace Alumni.Data.Migrations
 
             modelBuilder.Entity("Alumni.Data.Models.Comment", b =>
                 {
-                    b.Property<string>("CommentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Contents")
                         .IsRequired()
@@ -112,15 +85,14 @@ namespace Alumni.Data.Migrations
                     b.Property<DateTime>("LastEdited")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NewsId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("NewsId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PostId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CommentId");
 
@@ -135,8 +107,9 @@ namespace Alumni.Data.Migrations
 
             modelBuilder.Entity("Alumni.Data.Models.Event", b =>
                 {
-                    b.Property<string>("EventId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("EventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Contents")
                         .IsRequired()
@@ -168,34 +141,78 @@ namespace Alumni.Data.Migrations
                     b.HasData(
                         new
                         {
-                            EventId = "2ccab0d1-a47d-4caf-adb4-04d70bb839bd",
+                            EventId = new Guid("87c281f4-5052-47a5-a6f4-75c9741663ef"),
                             Contents = "The class of 2016 is going to have a meeting at the local park. There`s going to be food, but you can bring some.",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5801),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 5, 2, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5803),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 5, 2, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2016 class"
                         },
                         new
                         {
-                            EventId = "8b0d26ec-462e-4f50-afdb-1c8dd9ed4428",
+                            EventId = new Guid("541e7f5d-4016-474e-acd2-2f30ecd9a446"),
                             Contents = "The class of 2011 is going to have a meeting at the local beach.",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5807),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 7, 5, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5808),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 7, 5, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2011 class"
                         },
                         new
                         {
-                            EventId = "c0a29077-7315-46f3-b80d-edb25d96a00b",
+                            EventId = new Guid("9a1172e2-e2e5-44fd-92e6-285c1154e8dc"),
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5838),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5839),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2009 class"
+                        },
+                        new
+                        {
+                            EventId = new Guid("832388e9-e1d9-4878-9299-273129c9f247"),
+                            Contents = "The class of 2003 is going to have a meeting at the local pub.",
+                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8914),
+                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8917),
+                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2003 class"
+                        },
+                        new
+                        {
+                            EventId = new Guid("74a8ad71-9425-4115-8b44-55cc94b13a89"),
+                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
+                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8920),
+                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8922),
+                            StartDateTime = new DateTime(2010, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2009 class"
+                        },
+                        new
+                        {
+                            EventId = new Guid("8f0a57e7-afe3-4648-8efa-9a977602bee0"),
+                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
+                            CreatedOn = new DateTime(2025, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8926),
+                            StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Meeting - 2009 class"
+                        },
+                        new
+                        {
+                            EventId = new Guid("257cb7ad-df19-4cac-a009-f68eeb305afa"),
+                            Contents = "The class of 2009 is going to have a meeting at the local pub.",
+                            CreatedOn = new DateTime(2023, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2022, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         });
@@ -203,8 +220,9 @@ namespace Alumni.Data.Migrations
 
             modelBuilder.Entity("Alumni.Data.Models.News", b =>
                 {
-                    b.Property<string>("NewsId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("NewsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Contents")
                         .IsRequired()
@@ -230,19 +248,38 @@ namespace Alumni.Data.Migrations
                     b.HasData(
                         new
                         {
-                            NewsId = "cc8e221f-08de-4cec-9278-c91a20ef6f97",
+                            NewsId = new Guid("85183070-d0af-41a1-9b3b-95d0073995eb"),
                             Contents = "Test seed",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5774),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5775),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "News"
+                        },
+                        new
+                        {
+                            NewsId = new Guid("fb8f1f7a-8853-4bed-8008-a17ae2a3be3f"),
+                            Contents = "funny haha get shmucked",
+                            CreatedOn = new DateTime(2024, 5, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8594),
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 9, 11, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8598),
+                            Title = "file"
+                        },
+                        new
+                        {
+                            NewsId = new Guid("31dedd8d-0dc7-455a-955a-14d7d5e9320f"),
+                            Contents = "f k y u d b j g d",
+                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8602),
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8604),
                             Title = "News"
                         });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.Post", b =>
                 {
-                    b.Property<string>("PostId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("PostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Contents")
                         .IsRequired()
@@ -261,8 +298,8 @@ namespace Alumni.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PostId");
 
@@ -273,70 +310,71 @@ namespace Alumni.Data.Migrations
                     b.HasData(
                         new
                         {
-                            PostId = "409b3a76-a767-47e6-a307-ed0d967a37c2",
+                            PostId = new Guid("ecfccb98-75a2-49ee-910d-e5a5ec44ae5b"),
                             Contents = "On the 23.08.24 the alumni of Softuni Buditel will gather for a tea party in South park",
-                            CreatedOn = new DateTime(2024, 6, 25, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5562),
+                            CreatedOn = new DateTime(2024, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5564),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Alumni gathering",
-                            UserId = "1"
+                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
                         },
                         new
                         {
-                            PostId = "2968a80b-50f4-4487-8de2-e404735c75b7",
+                            PostId = new Guid("7463e718-280e-47b6-93b3-f6d629e26a9d"),
                             Contents = "My master is a guy who likes to wear black and fights crime",
-                            CreatedOn = new DateTime(2024, 6, 24, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5585),
+                            CreatedOn = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 24, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5587),
+                            LastEdited = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Just a random post",
-                            UserId = "123"
+                            UserId = new Guid("30913bf8-4000-4809-801e-764de3136c0e")
                         },
                         new
                         {
-                            PostId = "9385f943-fe19-4231-8326-cbac47d508bb",
+                            PostId = new Guid("ee03701f-f3c6-4872-8dc8-800a99947a9d"),
                             Contents = "I am prince Ferdinand, the first tzar of the new Bulgaria",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5608),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5610),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Listen to your tzar",
-                            UserId = "102"
+                            UserId = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918")
                         },
                         new
                         {
-                            PostId = "8033dea4-adfc-4241-8bbb-e3445d46a050",
+                            PostId = new Guid("2fae760d-6a45-45ed-ae78-e4451ebf47f8"),
                             Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5626),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5627),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Test",
-                            UserId = "1"
+                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
                         },
                         new
                         {
-                            PostId = "229dd424-c2a3-46c9-a3ee-a7f97819b112",
+                            PostId = new Guid("22a984ee-76a2-4c73-b0bf-7ac5e30ccc1b"),
                             Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5643),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5645),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Test",
-                            UserId = "1"
+                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
                         },
                         new
                         {
-                            PostId = "953038c8-25c7-461e-9dfd-63b4d99c2b1e",
+                            PostId = new Guid("62c9dd2b-1ad2-4089-a157-c358c0422884"),
                             Contents = "Hello everyone! I hope you're doing well. I'm thrilled to announce the launch of our new alumni mentorship program.This initiative aims to connect recent graduates with seasoned professionals.It's a fantastic opportunity to share your knowledge, give back to our community, and guide the next generation. I look forward to seeing many of you participate!",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5663),
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5665),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Test",
-                            UserId = "1"
+                            UserId = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292")
                         });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -409,58 +447,83 @@ namespace Alumni.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27b79543-4841-47b3-9218-2b54c56ed07b",
-                            CreatedOn = new DateTime(2024, 6, 18, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5420),
+                            ConcurrencyStamp = "3365c379-ae79-4841-93bb-9ede0e6c750b",
+                            CreatedOn = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 18, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5469),
+                            LastEdited = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "77926f90-b09b-42ad-95ae-537e110f11f4",
                             TwoFactorEnabled = false,
                             UserName = "Vasko Bilkata"
                         },
                         new
                         {
-                            Id = "123",
+                            Id = new Guid("30913bf8-4000-4809-801e-764de3136c0e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ea13d12f-48d7-4702-a2a3-e1bfba33aee7",
-                            CreatedOn = new DateTime(2024, 6, 22, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5514),
+                            ConcurrencyStamp = "bbb8a124-ff9f-4146-b1ff-c1a1848f9300",
+                            CreatedOn = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5515),
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9c30f54a-e995-4cd3-b79b-8f9bf97ea9a3",
                             TwoFactorEnabled = false,
                             UserName = "Michael Caine"
                         },
                         new
                         {
-                            Id = "102",
+                            Id = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "81a13adf-1af5-4935-828f-e4204b235ef1",
-                            CreatedOn = new DateTime(2024, 6, 26, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5536),
+                            ConcurrencyStamp = "24826760-fd68-4811-ac0d-4c49f1ff0726",
+                            CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 6, 30, 16, 49, 22, 212, DateTimeKind.Local).AddTicks(5538),
+                            LastEdited = new DateTime(2024, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b49adf16-28d3-4343-ab82-aa77efc318da",
                             TwoFactorEnabled = false,
                             UserName = "Prince Ferdinand"
+                        },
+                        new
+                        {
+                            Id = new Guid("b6a98fd4-b8db-4566-ad8c-d7c49f3bd2db"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b07f1e43-7bd6-4c88-98a7-2baf55cd25bc",
+                            CreatedOn = new DateTime(2024, 6, 28, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8275),
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 7, 5, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8317),
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Burxh califchar"
+                        },
+                        new
+                        {
+                            Id = new Guid("6609e8af-abbe-4472-a1ff-ab5fdfb92f80"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1114fb0c-d3f2-4994-aebc-707f84e270e0",
+                            CreatedOn = new DateTime(2024, 7, 11, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8325),
+                            EmailConfirmed = false,
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 7, 12, 12, 14, 51, 560, DateTimeKind.Local).AddTicks(8327),
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "gazelle trueman"
                         });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.UserEvent", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("EventId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserId", "EventId");
 
@@ -469,10 +532,11 @@ namespace Alumni.Data.Migrations
                     b.ToTable("UsersEvents");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -496,7 +560,7 @@ namespace Alumni.Data.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -510,9 +574,8 @@ namespace Alumni.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -521,7 +584,7 @@ namespace Alumni.Data.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -535,9 +598,8 @@ namespace Alumni.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -546,7 +608,7 @@ namespace Alumni.Data.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -559,9 +621,8 @@ namespace Alumni.Data.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -570,13 +631,13 @@ namespace Alumni.Data.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -585,10 +646,10 @@ namespace Alumni.Data.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -634,12 +695,14 @@ namespace Alumni.Data.Migrations
                     b.HasOne("Alumni.Data.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Alumni.Data.Models.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Post");
 
@@ -650,7 +713,9 @@ namespace Alumni.Data.Migrations
                 {
                     b.HasOne("Alumni.Data.Models.User", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -674,16 +739,16 @@ namespace Alumni.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
                     b.HasOne("Alumni.Data.Models.User", null)
                         .WithMany()
@@ -692,7 +757,7 @@ namespace Alumni.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.HasOne("Alumni.Data.Models.User", null)
                         .WithMany()
@@ -701,9 +766,9 @@ namespace Alumni.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -716,7 +781,7 @@ namespace Alumni.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
                     b.HasOne("Alumni.Data.Models.User", null)
                         .WithMany()
