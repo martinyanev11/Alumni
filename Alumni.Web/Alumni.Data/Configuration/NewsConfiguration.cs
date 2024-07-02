@@ -20,8 +20,9 @@ namespace Alumni.Data.Configuration
                 LastEdited = DateTime.Parse("2024-06-28"),
                 IsDeleted = false,
                 Title = "News",
-                Contents = "Test seed"
-            }
+                Contents = "Test seed",
+				ImageUrl = "asd"
+			}
             , new News
             {
                 NewsId = Guid.Parse("fb8f1f7a88534bed8008a17ae2a3be3f"),
@@ -29,8 +30,9 @@ namespace Alumni.Data.Configuration
                 LastEdited = DateTime.Now.AddDays(75),
                 IsDeleted = true,
                 Title = "file",
-                Contents = "funny haha get shmucked"
-            }
+                Contents = "funny haha get shmucked",
+				ImageUrl = "asd"
+			}
             , new News
             {
                 NewsId = Guid.Parse("31dedd8d0dc7455a955a14d7d5e9320f"),
@@ -38,8 +40,9 @@ namespace Alumni.Data.Configuration
                 LastEdited = DateTime.Now,
                 IsDeleted = false,
                 Title = "News",
-                Contents = "f k y u d b j g d"
-            });
+                Contents = "f k y u d b j g d",
+				ImageUrl = "asd"
+			});
         }
     }
 }

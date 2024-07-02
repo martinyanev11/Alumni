@@ -17,6 +17,8 @@ namespace Alumni.Data.Models
             Contents = null!;
         }
         [Required]
+        public string? ImageUrl { get; set; } = null;
+        [Required]
         public DateTime CreatedOn { get; set; }
 
         [Required]

@@ -38,6 +38,9 @@ namespace Alumni.Data.Models
         [ForeignKey(nameof(User))]
         public Guid UserId { get; set; }
         public User? User { get; set; }
+        [Required]
+        public string? ImageUrl { get; set; } = null;
+
 
         /*[ForeignKey(nameof(Admin))]
         public string? AdminId { get; set; }

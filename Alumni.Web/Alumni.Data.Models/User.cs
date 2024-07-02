@@ -6,6 +6,8 @@ namespace Alumni.Data.Models
     public class User : IdentityUser<Guid>
     {
         [Required]
+        public string? ImageUrl { get; set; } = null;
+        [Required]
         public DateTime CreatedOn { get; set; }
 
         [Required]

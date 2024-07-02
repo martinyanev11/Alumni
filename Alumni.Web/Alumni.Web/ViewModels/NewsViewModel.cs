@@ -9,5 +9,7 @@ namespace Alumni.Web.ViewModels
 		public DateTime LastEdited { get; set; }
 		public string Title { get; set; }
 		public string Contents { get; set; }
-	}
+        public string ImageUrl { get; set; }
+
+    }
 }

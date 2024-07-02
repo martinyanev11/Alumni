@@ -3,6 +3,7 @@ using Alumni.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Alumni.Data.Data
 {
@@ -12,7 +13,7 @@ namespace Alumni.Data.Data
             : base(options)
         {
         }
-
+        public override DbSet<User> Users { get; set; } = null;
         public DbSet<Event> Events { get; set; } = null!;
         public DbSet<Post> Posts { get; set; } = null!;
         public DbSet<News> News { get; set; } = null!;
@@ -23,14 +24,8 @@ namespace Alumni.Data.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new UserEventConfiguration());
-            builder.ApplyConfiguration(new CharityDonationUserConfiguration());
-            builder.ApplyConfiguration(new CommentConfiguration());
-
-            builder.ApplyConfiguration(new UserConfiguration());
-            builder.ApplyConfiguration(new NewsConfiguration());
-            builder.ApplyConfiguration(new PostConfiguration());
-            builder.ApplyConfiguration(new EventConfiguration());
+            Assembly ConfigurationAssembly = Assembly.GetExecutingAssembly();
+            builder.ApplyConfigurationsFromAssembly(ConfigurationAssembly);
 
             base.OnModelCreating(builder);
         }

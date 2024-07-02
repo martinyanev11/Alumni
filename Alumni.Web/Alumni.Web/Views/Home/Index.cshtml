@@ -6,8 +6,10 @@
 		<div>
 			<h1>@post.Title</h1>
 			<p>@post.Contents</p>
+			<img src="@post.ImageUrl"></img>
 			<p>Post created on: @post.CreatedOn</p>
 			<p>Post last edited on: @post.LastEdited</p>
+			
 		</div>
 	}
 	@foreach (var news in Model.News)
@@ -15,6 +17,7 @@
 		<div>
 			<h1>@news.Title</h1>
 			<p>@news.Contents</p>
+			<img src="@news.ImageUrl"></img>
 			<p>News created on: @news.CreatedOn</p>
 			<p>News last edited on: @news.LastEdited</p>
 		</div>
@@ -24,6 +27,7 @@
 		<div>
 			<h1>@ev.Title</h1>
 			<p>@ev.Contents</p>
+			<img src="@ev.ImageUrl"></img>
 			<p>Event created on: @ev.CreatedOn</p>
 			<p>Event last edited on: @ev.LastEdited</p>
 		</div>
@@ -31,8 +35,9 @@
 	@foreach (var cd in Model.CharityDonations)
 	{
 		<div>
-			@* <h1>@ev.Title</h1>
-			<p>@ev.Contents</p> *@
+			 <h1>@cd.Title</h1>
+			<p>@cd.Content</p> 
+			<img src="@cd.ImageUrl"></img>
 			<p>Donation goal: @cd.DonationGoal</p>
 			<p>Currently Raised: @cd.CurrentlyRaisedDonations</p>
 			<p>Charity Donation created on: @cd.CreatedOn</p>

@@ -11,7 +11,7 @@ builder.Services.AddDbContext<AlumniDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => { options.SignIn.RequireConfirmedEmail = false; })
     .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<AlumniDbContext>();
 builder.Services.AddControllersWithViews();
@@ -32,9 +32,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

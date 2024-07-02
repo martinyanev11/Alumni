@@ -36,8 +36,19 @@ namespace Alumni.Web.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int statusCode)
         {
+            switch (statusCode) 
+            {
+                case 400:
+                case 401:
+                case 403:
+                case 404:
+                case 500:
+                return View($"Error{statusCode}");
+                    
+            }
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

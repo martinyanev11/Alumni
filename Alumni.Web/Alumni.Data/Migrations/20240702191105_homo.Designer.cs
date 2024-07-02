@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni.Data.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    [Migration("20240702020408_Test")]
-    partial class Test
+    [Migration("20240702191105_homo")]
+    partial class homo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,10 @@ namespace Alumni.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -40,15 +44,85 @@ namespace Alumni.Data.Migrations
                     b.Property<decimal>("DonationGoal")
                         .HasColumnType("decimal(12,3)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastEdited")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CharityDonationId");
 
                     b.ToTable("CharityDonations");
+
+                    b.HasData(
+                        new
+                        {
+                            CharityDonationId = new Guid("59a312f0-e57a-4cd7-9c7e-66a29918792d"),
+                            Content = "for this cause",
+                            CreatedOn = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 4396m,
+                            DonationGoal = 6000m,
+                            ImageUrl = "asd",
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Donate"
+                        },
+                        new
+                        {
+                            CharityDonationId = new Guid("f376c876-984f-4605-b488-d6bc6872c0bf"),
+                            Content = "for this cause",
+                            CreatedOn = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 5078m,
+                            DonationGoal = 5000m,
+                            ImageUrl = "asd",
+                            IsDeleted = true,
+                            LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Donate"
+                        },
+                        new
+                        {
+                            CharityDonationId = new Guid("18065e6b-eb60-4bbc-a877-829e28fc60d6"),
+                            Content = "for this cause",
+                            CreatedOn = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 34m,
+                            DonationGoal = 6000m,
+                            ImageUrl = "asd",
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Donate"
+                        },
+                        new
+                        {
+                            CharityDonationId = new Guid("f0e619aa-c6fc-49cb-9e48-67533f3904ff"),
+                            Content = "for this cause",
+                            CreatedOn = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 4786m,
+                            DonationGoal = 6069m,
+                            ImageUrl = "asd",
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Donate"
+                        },
+                        new
+                        {
+                            CharityDonationId = new Guid("d5e58825-c20b-4e58-9c60-12bc6253681c"),
+                            Content = "for this cause",
+                            CreatedOn = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CurrentlyRaisedDonations = 9485m,
+                            DonationGoal = 10342m,
+                            ImageUrl = "asd",
+                            IsDeleted = false,
+                            LastEdited = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Donate"
+                        });
                 });
 
             modelBuilder.Entity("Alumni.Data.Models.CharityDonationUser", b =>
@@ -121,6 +195,10 @@ namespace Alumni.Data.Migrations
                     b.Property<DateTime>("EndDateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -145,6 +223,7 @@ namespace Alumni.Data.Migrations
                             Contents = "The class of 2016 is going to have a meeting at the local park. There`s going to be food, but you can bring some.",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 5, 2, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 5, 2, 17, 30, 0, 0, DateTimeKind.Unspecified),
@@ -156,6 +235,7 @@ namespace Alumni.Data.Migrations
                             Contents = "The class of 2011 is going to have a meeting at the local beach.",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 7, 5, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 7, 5, 17, 30, 0, 0, DateTimeKind.Unspecified),
@@ -167,6 +247,7 @@ namespace Alumni.Data.Migrations
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
@@ -176,10 +257,11 @@ namespace Alumni.Data.Migrations
                         {
                             EventId = new Guid("832388e9-e1d9-4878-9299-273129c9f247"),
                             Contents = "The class of 2003 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1462),
+                            CreatedOn = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(864),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1464),
+                            LastEdited = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(881),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2003 class"
                         },
@@ -187,10 +269,11 @@ namespace Alumni.Data.Migrations
                         {
                             EventId = new Guid("74a8ad71-9425-4115-8b44-55cc94b13a89"),
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1467),
+                            CreatedOn = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(892),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1469),
+                            LastEdited = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(894),
                             StartDateTime = new DateTime(2010, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         },
@@ -200,8 +283,9 @@ namespace Alumni.Data.Migrations
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
                             CreatedOn = new DateTime(2025, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1473),
+                            LastEdited = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(905),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         },
@@ -211,6 +295,7 @@ namespace Alumni.Data.Migrations
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
                             CreatedOn = new DateTime(2023, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2022, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
@@ -230,6 +315,10 @@ namespace Alumni.Data.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -251,6 +340,7 @@ namespace Alumni.Data.Migrations
                             NewsId = new Guid("85183070-d0af-41a1-9b3b-95d0073995eb"),
                             Contents = "Test seed",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "News"
@@ -259,18 +349,20 @@ namespace Alumni.Data.Migrations
                         {
                             NewsId = new Guid("fb8f1f7a-8853-4bed-8008-a17ae2a3be3f"),
                             Contents = "funny haha get shmucked",
-                            CreatedOn = new DateTime(2024, 6, 1, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1116),
+                            CreatedOn = new DateTime(2024, 6, 1, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(4445),
+                            ImageUrl = "asd",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 9, 15, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1119),
+                            LastEdited = new DateTime(2024, 9, 15, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(4457),
                             Title = "file"
                         },
                         new
                         {
                             NewsId = new Guid("31dedd8d-0dc7-455a-955a-14d7d5e9320f"),
                             Contents = "f k y u d b j g d",
-                            CreatedOn = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1123),
+                            CreatedOn = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(4465),
+                            ImageUrl = "asd",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(1124),
+                            LastEdited = new DateTime(2024, 7, 2, 22, 11, 3, 306, DateTimeKind.Local).AddTicks(4467),
                             Title = "News"
                         });
                 });
@@ -287,6 +379,10 @@ namespace Alumni.Data.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -313,6 +409,7 @@ namespace Alumni.Data.Migrations
                             PostId = new Guid("ecfccb98-75a2-49ee-910d-e5a5ec44ae5b"),
                             Contents = "On the 23.08.24 the alumni of Softuni Buditel will gather for a tea party in South park",
                             CreatedOn = new DateTime(2024, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Alumni gathering",
@@ -323,6 +420,7 @@ namespace Alumni.Data.Migrations
                             PostId = new Guid("7463e718-280e-47b6-93b3-f6d629e26a9d"),
                             Contents = "My master is a guy who likes to wear black and fights crime",
                             CreatedOn = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Just a random post",
@@ -333,6 +431,7 @@ namespace Alumni.Data.Migrations
                             PostId = new Guid("ee03701f-f3c6-4872-8dc8-800a99947a9d"),
                             Contents = "I am prince Ferdinand, the first tzar of the new Bulgaria",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = true,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Listen to your tzar",
@@ -343,6 +442,7 @@ namespace Alumni.Data.Migrations
                             PostId = new Guid("2fae760d-6a45-45ed-ae78-e4451ebf47f8"),
                             Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Test",
@@ -353,6 +453,7 @@ namespace Alumni.Data.Migrations
                             PostId = new Guid("22a984ee-76a2-4c73-b0bf-7ac5e30ccc1b"),
                             Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Test",
@@ -363,6 +464,7 @@ namespace Alumni.Data.Migrations
                             PostId = new Guid("62c9dd2b-1ad2-4089-a157-c358c0422884"),
                             Contents = "Hello everyone! I hope you're doing well. I'm thrilled to announce the launch of our new alumni mentorship program.This initiative aims to connect recent graduates with seasoned professionals.It's a fantastic opportunity to share your knowledge, give back to our community, and guide the next generation. I look forward to seeing many of you participate!",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Test",
@@ -392,6 +494,10 @@ namespace Alumni.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -449,9 +555,10 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b3a3a991-cd70-4f9f-882e-19d6ca310830",
+                            ConcurrencyStamp = "48f52a83-8359-40de-8ec8-29c7bcd6a08e",
                             CreatedOn = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
@@ -463,9 +570,10 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("30913bf8-4000-4809-801e-764de3136c0e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9cc570fe-dc9a-4fc9-b6f2-766101ec0946",
+                            ConcurrencyStamp = "8d6bb117-cedb-4608-ab9c-4a68d4c82141",
                             CreatedOn = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
+                            ImageUrl = "asd",
                             IsDeleted = true,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
@@ -477,9 +585,10 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "496c63cb-858f-4fac-8964-b705fd3357f5",
+                            ConcurrencyStamp = "a28c21db-9f56-4d1e-8a95-7d606280f777",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
+                            ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
@@ -491,11 +600,12 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("b6a98fd4-b8db-4566-ad8c-d7c49f3bd2db"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2756ccca-fd9e-465c-9f3b-82e2f705efc6",
-                            CreatedOn = new DateTime(2024, 7, 2, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(759),
+                            ConcurrencyStamp = "06d6c87a-9f89-44c0-88cf-14c4f343af8c",
+                            CreatedOn = new DateTime(2024, 7, 2, 22, 11, 3, 307, DateTimeKind.Local).AddTicks(4878),
                             EmailConfirmed = false,
+                            ImageUrl = "asd",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 9, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(802),
+                            LastEdited = new DateTime(2024, 7, 9, 22, 11, 3, 307, DateTimeKind.Local).AddTicks(4886),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -505,11 +615,12 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("6609e8af-abbe-4472-a1ff-ab5fdfb92f80"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cdb37f1a-268d-45b3-a4f2-ba3d88385596",
-                            CreatedOn = new DateTime(2024, 7, 15, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(811),
+                            ConcurrencyStamp = "8bc8939b-4214-4d99-b3a8-ccbc4e25f5ef",
+                            CreatedOn = new DateTime(2024, 7, 15, 22, 11, 3, 307, DateTimeKind.Local).AddTicks(4924),
                             EmailConfirmed = false,
+                            ImageUrl = "asd",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 7, 16, 5, 4, 7, 294, DateTimeKind.Local).AddTicks(812),
+                            LastEdited = new DateTime(2024, 7, 16, 22, 11, 3, 307, DateTimeKind.Local).AddTicks(4926),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -558,6 +669,13 @@ namespace Alumni.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d23fe586-7d83-4aa3-bab5-99cf956d0522"),
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -644,6 +762,13 @@ namespace Alumni.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
+                            RoleId = new Guid("d23fe586-7d83-4aa3-bab5-99cf956d0522")
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>

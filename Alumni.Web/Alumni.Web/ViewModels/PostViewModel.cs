@@ -14,5 +14,7 @@ namespace Alumni.Web.ViewModels
 		public DateTime CreatedOn { get; set; }
 
 		public DateTime LastEdited { get; set; }
-	}
+        public string ImageUrl { get; set; }
+
+    }
 }

@@ -22,8 +22,9 @@ namespace Alumni.Data.Configuration
                  CreatedOn = DateTime.Parse("2024-06-27"),
                  LastEdited = DateTime.Parse("2024-06-28"),
                  Title = "Alumni gathering",
-                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292")
-             }
+                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292"),
+				 ImageUrl = "asd"
+			 }
              , new Post
              {
                  Contents = "My master is a guy who likes to wear black and fights crime",
@@ -32,8 +33,9 @@ namespace Alumni.Data.Configuration
                  CreatedOn = DateTime.Parse("2024-06-26"),
                  LastEdited = DateTime.Parse("2024-06-26"),
                  Title = "Just a random post",
-                 UserId = Guid.Parse("30913bf8-4000-4809-801e-764de3136c0e")
-             }
+                 UserId = Guid.Parse("30913bf8-4000-4809-801e-764de3136c0e"),
+				 ImageUrl = "asd"
+			 }
              , new Post
              {
                  Contents = "I am prince Ferdinand, the first tzar of the new Bulgaria",
@@ -42,8 +44,9 @@ namespace Alumni.Data.Configuration
                  CreatedOn = DateTime.Parse("2024-06-28"),
                  LastEdited = DateTime.Parse("2024-06-28"),
                  Title = "Listen to your tzar",
-                 UserId = Guid.Parse("8d7ed0e0-1804-4283-aa5b-802033b2c918")
-             }
+                 UserId = Guid.Parse("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
+				 ImageUrl = "asd"
+			 }
              , new Post
              {
                  Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
@@ -52,8 +55,9 @@ namespace Alumni.Data.Configuration
                  LastEdited = DateTime.Parse("2024-06-28"),
                  Title = "Test",
                  PostId = Guid.Parse("2fae760d-6a45-45ed-ae78-e4451ebf47f8"),
-                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292")
-             }
+                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292"),
+				 ImageUrl = "asd"
+			 }
              , new Post
              {
                  Contents = "Hello everyone! I hope this message finds you well. I’m excited to announce the launch of our new alumni mentorship program, designed to connect recent graduates with experienced professionals. It's a great way to share your expertise, give back to our community, and help guide the next generation. Looking forward to seeing many of you get involved!",
@@ -62,8 +66,9 @@ namespace Alumni.Data.Configuration
                  LastEdited = DateTime.Parse("2024-06-28"),
                  Title = "Test",
                  PostId = Guid.Parse("22a984ee-76a2-4c73-b0bf-7ac5e30ccc1b"),
-                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292")
-             }
+                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292"),
+				 ImageUrl = "asd"
+			 }
              , new Post
              {
 
@@ -73,8 +78,9 @@ namespace Alumni.Data.Configuration
                  LastEdited = DateTime.Parse("2024-06-28"),
                  Title = "Test",
                  PostId = Guid.Parse("62c9dd2b-1ad2-4089-a157-c358c0422884"),
-                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292")
-             });
+                 UserId = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292"),
+				 ImageUrl = "asd"
+			 });
         }
     }
 }

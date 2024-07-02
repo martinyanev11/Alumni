@@ -6,6 +6,8 @@ namespace Alumni.Web.ViewModels
 {
     public class CharityDonationViewModel
     {
+        public string Title { get; set; }
+        public string Content { get; set; }
         public DateTime CreatedOn { get; set; }
 
         public DateTime LastEdited { get; set; }
@@ -15,7 +17,9 @@ namespace Alumni.Web.ViewModels
         public decimal DonationGoal { get; set; }
 
         public decimal CurrentlyRaisedDonations { get; set; }
+        public string ImageUrl { get; set; }
 
-        //public IEnumerable<User>? Donators { get; set; }
+
+        public IEnumerable<User>? Donators { get; set; }
     }
 }

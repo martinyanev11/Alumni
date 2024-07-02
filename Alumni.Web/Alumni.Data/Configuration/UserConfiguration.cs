@@ -21,40 +21,45 @@ namespace Alumni.Data.Configuration
                 CreatedOn = DateTime.Parse("2024-06-20"),
                 IsDeleted = false,
                 LastEdited = DateTime.Parse("2024-06-20"),
-                Id = Guid.Parse("8d7ed0e0-1804-4283-aa5b-802033b2c918")
-            }
+                Id = Guid.Parse("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
+				ImageUrl = "asd"
+			}
             , new User
             {
                 UserName = "Michael Caine",
                 CreatedOn = DateTime.Parse("2024-06-24"),
                 IsDeleted = true,
                 LastEdited = DateTime.Parse("2024-06-28"),
-                Id = Guid.Parse("30913bf8-4000-4809-801e-764de3136c0e")
-            }
+                Id = Guid.Parse("30913bf8-4000-4809-801e-764de3136c0e"),
+				ImageUrl = "asd"
+			}
             , new User
             {
                 UserName = "Prince Ferdinand",
                 CreatedOn = DateTime.Parse("2024-06-28"),
                 IsDeleted = false,
                 LastEdited = DateTime.Parse("2024-07-02"),
-                Id = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292")
-            }
+                Id = Guid.Parse("7388ce0f-df30-4686-9e49-46daac4e0292"),
+				ImageUrl = "asd"
+			}
             , new User
             {
                 UserName = "Burxh califchar",
                 CreatedOn = DateTime.Now,
                 IsDeleted = false,
                 LastEdited = DateTime.Now.AddDays(7),
-                Id = Guid.Parse("b6a98fd4b8db4566ad8cd7c49f3bd2db")
-            }
+                Id = Guid.Parse("b6a98fd4b8db4566ad8cd7c49f3bd2db"),
+				ImageUrl = "asd"
+			}
             , new User
             {
                 UserName = "gazelle trueman",
                 CreatedOn = DateTime.Now.AddDays(13),
                 IsDeleted = true,
                 LastEdited = DateTime.Now.AddDays(14),
-                Id = Guid.Parse("6609e8afabbe4472a1ffab5fdfb92f80")
-            }); ;
+                Id = Guid.Parse("6609e8afabbe4472a1ffab5fdfb92f80"),
+				ImageUrl = "asd"
+			}); ;
         }
     }
 }
