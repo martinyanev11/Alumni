@@ -1,22 +1,34 @@
+using Alumni.Data.Data;
+using Alumni.Data.Models;
 using Alumni.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+
 
 namespace Alumni.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AlumniDbContext _context;
+        public HomeController(ILogger<HomeController> logger, AlumniDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+
+			var models = new AllContentViewModel();
+
+			models.Posts = _context.Posts.OrderByDescending(x => x.CreatedOn).Take(3).ToList();
+			models.News = _context.News.OrderByDescending(x => x.CreatedOn).Take(3).ToList();
+			models.Events = _context.Events.OrderByDescending(x => x.CreatedOn).Take(3).ToList();
+            models.CharityDonations = _context.CharityDonations.OrderByDescending(x => x.CreatedOn).Take(3).ToList(); 
+
+            return View(models);
+		}
 
         public IActionResult Privacy()
         {
