@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alumni.Web.Controllers
 {
-    [ValidateAntiForgeryToken]
+   
     public class NewsController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alumni.Web.Controllers
 {
+    
     public class EventController : Controller
     {
         private readonly ILogger<HomeController> _logger;

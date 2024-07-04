@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Alumni.Web.Controllers
 {
-    [ValidateAntiForgeryToken]
+   
     public class CharityDonationController : Controller
     {
 		private readonly AlumniDbContext _context;
