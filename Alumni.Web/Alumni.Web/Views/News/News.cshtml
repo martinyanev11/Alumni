@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Alumni.Web.ViewModels.NewsViewModel>
+@Html.AntiForgeryToken()
+@{
+    ViewData["Title"] = "News";
+}
+
+<h1 class="text-center display-4">News</h1>
+
+@foreach (var news in Model)
+{
+    <div>
+        <h1>@news.Title</h1>
+        <p>@news.Contents</p>
+        <img src="@news.ImageUrl"></img>
+        <p>News created on: @news.CreatedOn</p>
+        <p>News last edited on: @news.LastEdited</p>
+    </div>
+}   

@@ -7,6 +7,7 @@ using System.Diagnostics;
 
 namespace Alumni.Web.Controllers
 {
+    [ValidateAntiForgeryToken]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

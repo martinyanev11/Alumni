@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Alumni.Web.ViewModels.EventViewModel>;
+@Html.AntiForgeryToken()
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Events</h1>
+</div>
+
+@{
+    foreach (var ev in Model)
+    {
+        <div>
+            <h1>@ev.Title</h1>
+            <p>@ev.Contents</p>
+            <img src="@ev.ImageUrl"></img>
+            <p>News created on:  v.CreatedOn</p>
+            <p>News last edited on: @ev.LastEdited</p>
+        </div>
+    }
+}

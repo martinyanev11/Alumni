@@ -22,9 +22,4 @@
     <ProjectReference Include="..\Alumni.Data\Alumni.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Events\" />
-    <Folder Include="Views\News\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Alumni.Web.ViewModels.CharityDonationViewModel>
+@Html.AntiForgeryToken()
 @{
     foreach (var item in Model)
     {

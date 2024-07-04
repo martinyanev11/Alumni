@@ -10,6 +10,6 @@ namespace Alumni.Web.ViewModels
 		public string Title { get; set; }
 		public string Contents { get; set; }
         public string ImageUrl { get; set; }
-
+	
     }
 }
