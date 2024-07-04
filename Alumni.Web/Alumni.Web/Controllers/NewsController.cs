@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alumni.Web.Controllers
 {
-   
+
     public class NewsController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -29,6 +29,19 @@ namespace Alumni.Web.Controllers
             }).ToList();
             return View(news);
         }
-
+        public IActionResult NewsDetails(Guid newsId)
+        {
+            NewsViewModel details = _context.News.Where(x => x.NewsId == newsId).Select(d => new NewsViewModel
+            {
+                Title = d.Title,
+                Contents = d.Contents,
+                CreatedOn = d.CreatedOn,
+                ImageUrl = d.ImageUrl,
+                NewsId = d.NewsId,
+                LastEdited = d.LastEdited,
+            })
+                 .FirstOrDefault();
+            return View(details);
+        }
     }
 }

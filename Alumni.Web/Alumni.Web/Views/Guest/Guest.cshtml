@@ -1,0 +1,55 @@
+﻿@model Alumni.Web.ViewModels.GuestViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <!-- News Section -->
+    <section>
+        <h2>News</h2>
+        <div class="row">
+            @foreach (var item in Model.News)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="height: 350px;">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Contents</p>
+                            <a href="#" class="btn btn-secondary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="mt-5">
+        <h2>Events</h2>
+        <div class="row">
+            @foreach (var item in Model.Events)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="height: 350px;">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Contents</p>
+                            <a href="#" class="btn btn-secondary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Additional Information Section -->
+    <section class="mt-5">
+        <h2>About Our Alumni Network</h2>
+        <p>Our alumni network helps former students stay connected with the university and each other. We provide various resources and events to support our alumni in their professional and personal lives.</p>
+        <p>Whether you are looking to reconnect with old friends, expand your professional network, or give back to the community, our alumni network is here to help.</p>
+        <a href="#" class="btn btn-primary">Learn more about us</a>
+    </section>
+</div>

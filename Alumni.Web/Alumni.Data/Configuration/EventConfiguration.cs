@@ -53,8 +53,8 @@ namespace Alumni.Data.Configuration
                 Contents = "The class of 2003 is going to have a meeting at the local pub.",
                 StartDateTime = new DateTime(2024, 05, 08, 17, 30, 00),
                 EndDateTime = new DateTime(2024, 05, 08, 20, 00, 00),
-				ImageUrl = "asd"
-			}
+				ImageUrl = "/images/event3.jpg"
+            }
             , new Event
             {
                 EventId = Guid.Parse("74a8ad71942541158b4455cc94b13a89"),
@@ -65,7 +65,7 @@ namespace Alumni.Data.Configuration
                 Contents = "The class of 2009 is going to have a meeting at the local pub.",
                 StartDateTime = new DateTime(2010, 05, 08, 17, 30, 00),
                 EndDateTime = new DateTime(2024, 05, 08, 20, 00, 00),
-				ImageUrl = "asd"
+				ImageUrl = "/images/event1.jpg"
 			}
             , new Event
             {
@@ -77,7 +77,7 @@ namespace Alumni.Data.Configuration
                 Contents = "The class of 2009 is going to have a meeting at the local pub.",
                 StartDateTime = new DateTime(2024, 05, 08, 17, 30, 00),
                 EndDateTime = new DateTime(2024, 05, 08, 20, 00, 00),
-				ImageUrl = "asd"
+				ImageUrl = "/images/event1.jpg"
 			}
             , new Event
             {
@@ -89,7 +89,7 @@ namespace Alumni.Data.Configuration
                 Contents = "The class of 2009 is going to have a meeting at the local pub.",
                 StartDateTime = new DateTime(2024, 05, 08, 17, 30, 00),
                 EndDateTime = new DateTime(2024, 05, 08, 20, 00, 00),
-				ImageUrl = "asd"
+				ImageUrl = "/images/event1.jpg"
 			}
             );
 

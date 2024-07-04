@@ -6,6 +6,7 @@
         <div class="charity-donation">
            <h1>@item.Title</h1>
            <p>@item.Content</p>
+           <img src =@item.ImageUrl/>
             <h3>@item.DonationGoal</h3>
             <h4>@item.CurrentlyRaisedDonations</h4>
             @foreach (var don in item.Donators)

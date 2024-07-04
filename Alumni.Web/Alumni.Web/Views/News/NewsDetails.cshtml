@@ -1,0 +1,15 @@
+﻿@model Alumni.Web.ViewModels.NewsViewModel
+@{
+    ViewData["Title"] = "NewsDetails";
+}
+
+<h1 class="text-center display-4">News</h1>
+
+
+<div>
+    <h1>@Model.Title</h1>
+    <p>@Model.Contents</p>
+    <img src="@Model.ImageUrl"></img>
+    <p>News created on: @Model.CreatedOn</p>
+    <p>News last edited on: @Model.LastEdited</p>
+</div>

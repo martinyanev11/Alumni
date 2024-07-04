@@ -4,6 +4,7 @@ using Alumni.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni.Data.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    partial class AlumniDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704092337_seededimages")]
+    partial class seededimages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,11 +257,11 @@ namespace Alumni.Data.Migrations
                         {
                             EventId = new Guid("832388e9-e1d9-4878-9299-273129c9f247"),
                             Contents = "The class of 2003 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(1861),
+                            CreatedOn = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(2894),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "/images/event3.jpg",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(1874),
+                            LastEdited = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(2919),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2003 class"
                         },
@@ -266,11 +269,11 @@ namespace Alumni.Data.Migrations
                         {
                             EventId = new Guid("74a8ad71-9425-4115-8b44-55cc94b13a89"),
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(1878),
+                            CreatedOn = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(2924),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "/images/event1.jpg",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(1879),
+                            LastEdited = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(2925),
                             StartDateTime = new DateTime(2010, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         },
@@ -282,7 +285,7 @@ namespace Alumni.Data.Migrations
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "/images/event1.jpg",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(1883),
+                            LastEdited = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(2932),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         },
@@ -346,20 +349,20 @@ namespace Alumni.Data.Migrations
                         {
                             NewsId = new Guid("fb8f1f7a-8853-4bed-8008-a17ae2a3be3f"),
                             Contents = "funny haha get shmucked",
-                            CreatedOn = new DateTime(2024, 6, 3, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(3530),
+                            CreatedOn = new DateTime(2024, 6, 3, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(4983),
                             ImageUrl = "/images/event3.jpg",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 9, 17, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(3543),
+                            LastEdited = new DateTime(2024, 9, 17, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(4995),
                             Title = "file"
                         },
                         new
                         {
                             NewsId = new Guid("31dedd8d-0dc7-455a-955a-14d7d5e9320f"),
                             Contents = "f k y u d b j g d",
-                            CreatedOn = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(3547),
+                            CreatedOn = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(4999),
                             ImageUrl = "/images/event3.jpg",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(3548),
+                            LastEdited = new DateTime(2024, 7, 4, 12, 23, 35, 422, DateTimeKind.Local).AddTicks(5000),
                             Title = "News"
                         });
                 });
@@ -552,7 +555,7 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c72f1d1f-ef6a-4ec0-8b9a-5d1ad00a0254",
+                            ConcurrencyStamp = "c85ef801-1d0f-481d-99a8-104d8b0711a5",
                             CreatedOn = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
@@ -567,7 +570,7 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("30913bf8-4000-4809-801e-764de3136c0e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f90b2733-1af9-494d-8b99-5e1b5133e12a",
+                            ConcurrencyStamp = "d417c1f6-de25-4fae-8928-081039c9603c",
                             CreatedOn = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
@@ -582,7 +585,7 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "09213f80-5e0d-4dbd-928b-7fa62dca778b",
+                            ConcurrencyStamp = "b96721cb-ad4a-4654-a35e-84187e53bbb0",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
@@ -597,12 +600,12 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("b6a98fd4-b8db-4566-ad8c-d7c49f3bd2db"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f46a8536-233b-41ed-a0ff-bac64b49edbe",
-                            CreatedOn = new DateTime(2024, 7, 4, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(8407),
+                            ConcurrencyStamp = "b55299e7-718b-433e-badf-87aa63dac61a",
+                            CreatedOn = new DateTime(2024, 7, 4, 12, 23, 35, 423, DateTimeKind.Local).AddTicks(1041),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2024, 7, 11, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(8413),
+                            LastEdited = new DateTime(2024, 7, 11, 12, 23, 35, 423, DateTimeKind.Local).AddTicks(1045),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -612,12 +615,12 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("6609e8af-abbe-4472-a1ff-ab5fdfb92f80"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b0aa3b86-64fe-40b4-90be-a91fd3ee84e2",
-                            CreatedOn = new DateTime(2024, 7, 17, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(8424),
+                            ConcurrencyStamp = "e076261b-fb1c-4be3-939f-2aae8f31bc25",
+                            CreatedOn = new DateTime(2024, 7, 17, 12, 23, 35, 423, DateTimeKind.Local).AddTicks(1053),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2024, 7, 18, 12, 57, 42, 16, DateTimeKind.Local).AddTicks(8425),
+                            LastEdited = new DateTime(2024, 7, 18, 12, 23, 35, 423, DateTimeKind.Local).AddTicks(1054),
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,

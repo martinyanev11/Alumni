@@ -8,7 +8,7 @@
 @foreach (var news in Model)
 {
     <div>
-        <h1>@news.Title</h1>
+        <h1><a asp-controller="News" asp-action="NewsDetails" asp-route-newsId="@news.NewsId">@news.Title</a></h1>
         <p>@news.Contents</p>
         <img src="@news.ImageUrl"></img>
         <p>News created on: @news.CreatedOn</p>
