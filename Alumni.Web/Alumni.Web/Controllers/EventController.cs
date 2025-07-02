@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alumni.Web.Controllers
 {
-    
-    public class EventController : Controller
+	// da se dobavi koga samiq event zapochva 
+	// admin - add event, edit event, delete event
+	public class EventController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AlumniDbContext _context;

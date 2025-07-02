@@ -6,6 +6,7 @@ namespace Alumni.Web.Controllers
 {
     public class GuestController : Controller
     {
+        // chesno neznam za kakvo e tova
         public IActionResult Guest()
         {
             var news = new List<NewsViewModel>

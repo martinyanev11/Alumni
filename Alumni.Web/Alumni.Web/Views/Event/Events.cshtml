@@ -1,22 +1,17 @@
-﻿@model IEnumerable<Alumni.Web.ViewModels.EventViewModel>;
-
-@{
-    ViewData["Title"] = "Events";
-}
+﻿@model IEnumerable<Alumni.Web.ViewModels.EventViewModel>
 
 <div class="text-center">
     <h1 class="display-4">Events</h1>
 </div>
 
-@{
-    foreach (var ev in Model)
-    {
-        <div>
-            <h1>@ev.Title</h1>
-            <p>@ev.Contents</p>
-            <img src="@ev.ImageUrl"></img>
-            <p>News created on:  v.CreatedOn</p>
-            <p>News last edited on: @ev.LastEdited</p>
-        </div>
-    }
+@foreach (var ev in Model)
+{
+    <div class="card mb-4 p-3 shadow-sm">
+        <h2>@ev.Title</h2>
+        <p>@ev.Contents</p>
+        <img src="@ev.ImageUrl" alt="Event Image" style="max-width: 100%; height: auto;" />
+        <p><strong>Event Date:</strong><!-- Add data for event start--> <!--@ev..ToString("dd MMM yyyy")--></p>
+        <p><strong>Created on:</strong> @ev.CreatedOn.ToString("dd MMM yyyy")</p>
+        <p><strong>Last edited on:</strong> @ev.LastEdited.ToString("dd MMM yyyy")</p>
+    </div>
 }

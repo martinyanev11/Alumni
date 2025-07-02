@@ -1,15 +1,25 @@
-﻿@model Alumni.Web.ViewModels.NewsViewModel
+﻿@model Alumni.Services.ServicesForNews.Models.NewsModel
+
 @{
-    ViewData["Title"] = "NewsDetails";
+    ViewData["Title"] = "News Details";
 }
 
-<h1 class="text-center display-4">News</h1>
+<div class="container mt-5">
+    <h2 class="mb-3">@Model.Title</h2>
 
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="News Image" class="img-fluid mb-4" />
+    }
 
-<div>
-    <h1>@Model.Title</h1>
-    <p>@Model.Contents</p>
-    <img src="@Model.ImageUrl"></img>
-    <p>News created on: @Model.CreatedOn</p>
-    <p>News last edited on: @Model.LastEdited</p>
+    <p class="text-muted">
+        Created: @Model.CreatedOn.ToString("dd MMM yyyy") |
+        Last Edited: @Model.LastEdited.ToString("dd MMM yyyy")
+    </p>
+
+    <div class="mb-5 fs-5">
+        @Model.Contents
+    </div>
+
+    <a asp-action="All" class="btn btn-outline-secondary">Back to News</a>
 </div>

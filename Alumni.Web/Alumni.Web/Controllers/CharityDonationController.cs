@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Alumni.Web.Controllers
 {
-   
-    public class CharityDonationController : Controller
+	// admin - add charity donation, edit charity donation, delete charity donation
+	public class CharityDonationController : Controller
     {
 		private readonly AlumniDbContext _context;
 		public CharityDonationController(AlumniDbContext context)

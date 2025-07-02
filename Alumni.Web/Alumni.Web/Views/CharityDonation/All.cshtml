@@ -1,20 +1,32 @@
 ﻿@model IEnumerable<Alumni.Web.ViewModels.CharityDonationViewModel>
 
-@{
-    foreach (var item in Model)
-    {
-        <div class="charity-donation">
-           <h1>@item.Title</h1>
-           <p>@item.Content</p>
-           <img src =@item.ImageUrl/>
-            <h3>@item.DonationGoal</h3>
-            <h4>@item.CurrentlyRaisedDonations</h4>
-            @foreach (var don in item.Donators)
-            {
-                <div class="donators">
-                    <h3>@don.UserName</h3>
-                </div>
-            }
-        </div>
-    }
+<h1 class="text-center display-4 my-4">Charity Donations</h1>
+
+@foreach (var item in Model)
+{
+    <div class="card mb-4 p-3 shadow-sm">
+        <h2>@item.Title</h2>
+        <p>@item.Content</p>
+
+        @if (!string.IsNullOrEmpty(item.ImageUrl))
+        {
+            <img src="@item.ImageUrl" alt="Charity Image" class="img-fluid my-2" />
+        }
+
+        <p><strong>Goal:</strong> $@item.DonationGoal.ToString("N2")</p>
+        <p><strong>Raised:</strong> $@item.CurrentlyRaisedDonations.ToString("N2")</p>
+
+        @if (item.Donators != null && item.Donators.Any())
+        {
+            <div class="mt-3">
+                <h5>Donators:</h5>
+                <ul>
+                    @foreach (var don in item.Donators)
+                    {
+                        <li>@don.UserName</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
 }
