@@ -1,6 +1,7 @@
 using Alumni.Data.Data;
 using Alumni.Data.Models;
 using Alumni.Services.ServicesForNews;
+using Alumni.Services.ServicesForEvents;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,7 +34,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // Register your custom services
 builder.Services.AddScoped<INewsService, NewsServices>();
-// builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IEventServices, EventServices>();
 // builder.Services.AddScoped<ICharityDonationService, CharityDonationService>();
 
 var app = builder.Build();

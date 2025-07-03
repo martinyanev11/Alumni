@@ -1,37 +1,117 @@
-﻿using Alumni.Data.Data;
-using Alumni.Web.ViewModels;
+﻿using Alumni.Web.ViewModels; 
+using Alumni.Services.ServicesForEvents;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using ServiceEventVM = Alumni.Services.ServicesForEvents.Models.EventViewModel; 
 
 namespace Alumni.Web.Controllers
 {
-	// da se dobavi koga samiq event zapochva 
-	// admin - add event, edit event, delete event
 	public class EventController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
-        private readonly AlumniDbContext _context;
-        public EventController(ILogger<HomeController> logger, AlumniDbContext context)
-        {
-            _logger = logger;
-            _context = context;
-        }
+	{
+		private readonly IEventServices _eventService;
 
-        public IActionResult Events()
-        {
-            List<EventViewModel> events;
-            events = _context.Events.Select(e => new EventViewModel
-            {
-                Title = e.Title,
-                Contents = e.Contents,
-                CreatedOn = e.CreatedOn,
-                LastEdited = e.LastEdited,
-                ImageUrl = e.ImageUrl,
-                EventId = e.EventId,
-                StartDateTime = e.StartDateTime,
-                EndDateTime = e.EndDateTime
-            }).ToList();
+		public EventController(IEventServices eventService)
+		{
+			_eventService = eventService;
+		}
 
-            return View(events);
-        }
-    }
+		public async Task<IActionResult> Events()
+		{
+			var serviceEvents = await _eventService.GetAllEventsAsync();
+
+			var webEvents = serviceEvents.ConvertAll(e => new EventViewModel
+			{
+				EventId = e.EventId,
+				Title = e.Title,
+				Contents = e.Contents,
+				CreatedOn = e.CreatedOn,
+				LastEdited = e.LastEdited,
+				ImageUrl = e.ImageUrl,
+				StartDateTime = e.StartDateTime,
+				EndDateTime = e.EndDateTime
+			});
+
+			return View(webEvents);
+		}
+
+		[HttpGet]
+		public IActionResult Add() => View();
+
+		[HttpPost]
+		public async Task<IActionResult> Add(EventViewModel model)
+		{
+			if (!ModelState.IsValid) return View(model);
+
+			model.CreatedOn = System.DateTime.UtcNow;
+			model.LastEdited = System.DateTime.UtcNow;
+
+			var serviceModel = new ServiceEventVM
+			{
+				EventId = model.EventId,
+				Title = model.Title,
+				Contents = model.Contents,
+				CreatedOn = model.CreatedOn,
+				LastEdited = model.LastEdited,
+				ImageUrl = model.ImageUrl,
+				StartDateTime = model.StartDateTime,
+				EndDateTime = model.EndDateTime
+			};
+
+			await _eventService.AddEventAsync(serviceModel);
+
+			return RedirectToAction(nameof(Events));
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Edit(int id)
+		{
+			var serviceModel = await _eventService.GetEventByIdAsync(id);
+			if (serviceModel == null) return NotFound();
+
+			var webModel = new EventViewModel
+			{
+				EventId = serviceModel.EventId,
+				Title = serviceModel.Title,
+				Contents = serviceModel.Contents,
+				CreatedOn = serviceModel.CreatedOn,
+				LastEdited = serviceModel.LastEdited,
+				ImageUrl = serviceModel.ImageUrl,
+				StartDateTime = serviceModel.StartDateTime,
+				EndDateTime = serviceModel.EndDateTime
+			};
+
+			return View(webModel);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(EventViewModel model)
+		{
+			if (!ModelState.IsValid) return View(model);
+
+			model.LastEdited = System.DateTime.UtcNow;
+
+			var serviceModel = new ServiceEventVM
+			{
+				EventId = model.EventId,
+				Title = model.Title,
+				Contents = model.Contents,
+				CreatedOn = model.CreatedOn,
+				LastEdited = model.LastEdited,
+				ImageUrl = model.ImageUrl,
+				StartDateTime = model.StartDateTime,
+				EndDateTime = model.EndDateTime
+			};
+
+			await _eventService.EditEventAsync(serviceModel);
+
+			return RedirectToAction(nameof(Events));
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Delete(int id)
+		{
+			await _eventService.DeleteEventAsync(id);
+			return RedirectToAction(nameof(Events));
+		}
+	}
 }

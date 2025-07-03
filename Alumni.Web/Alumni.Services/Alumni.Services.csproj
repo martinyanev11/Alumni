@@ -19,7 +19,6 @@
 	
 	<ItemGroup>
 	  <Folder Include="ServicesForCharityDonations\Models\" />
-	  <Folder Include="ServicesForEvents\Models\" />
 	  <Folder Include="ServicesForGuest\Models\" />
 	</ItemGroup>
 	
