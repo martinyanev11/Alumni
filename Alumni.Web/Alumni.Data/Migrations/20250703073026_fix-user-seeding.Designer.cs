@@ -4,6 +4,7 @@ using Alumni.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alumni.Data.Migrations
 {
     [DbContext(typeof(AlumniDbContext))]
-    partial class AlumniDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250703073026_fix-user-seeding")]
+    partial class fixuserseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,11 +257,11 @@ namespace Alumni.Data.Migrations
                         {
                             EventId = new Guid("832388e9-e1d9-4878-9299-273129c9f247"),
                             Contents = "The class of 2003 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(6331),
+                            CreatedOn = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(8698),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "/images/event3.jpg",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(6385),
+                            LastEdited = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(8752),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2003 class"
                         },
@@ -266,11 +269,11 @@ namespace Alumni.Data.Migrations
                         {
                             EventId = new Guid("74a8ad71-9425-4115-8b44-55cc94b13a89"),
                             Contents = "The class of 2009 is going to have a meeting at the local pub.",
-                            CreatedOn = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(6389),
+                            CreatedOn = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(8756),
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "/images/event1.jpg",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(6391),
+                            LastEdited = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(8758),
                             StartDateTime = new DateTime(2010, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         },
@@ -282,7 +285,7 @@ namespace Alumni.Data.Migrations
                             EndDateTime = new DateTime(2024, 5, 8, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "/images/event1.jpg",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(6394),
+                            LastEdited = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(8761),
                             StartDateTime = new DateTime(2024, 5, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
                             Title = "Meeting - 2009 class"
                         },
@@ -346,20 +349,20 @@ namespace Alumni.Data.Migrations
                         {
                             NewsId = new Guid("fb8f1f7a-8853-4bed-8008-a17ae2a3be3f"),
                             Contents = "funny haha get shmucked",
-                            CreatedOn = new DateTime(2025, 6, 2, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(7181),
+                            CreatedOn = new DateTime(2025, 6, 2, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(9463),
                             ImageUrl = "/images/event3.jpg",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2025, 9, 16, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(7187),
+                            LastEdited = new DateTime(2025, 9, 16, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(9474),
                             Title = "file"
                         },
                         new
                         {
                             NewsId = new Guid("31dedd8d-0dc7-455a-955a-14d7d5e9320f"),
                             Contents = "f k y u d b j g d",
-                            CreatedOn = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(7190),
+                            CreatedOn = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(9477),
                             ImageUrl = "/images/event3.jpg",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2025, 7, 3, 10, 37, 26, 577, DateTimeKind.Local).AddTicks(7191),
+                            LastEdited = new DateTime(2025, 7, 3, 10, 30, 25, 545, DateTimeKind.Local).AddTicks(9479),
                             Title = "News"
                         });
                 });
@@ -552,34 +555,32 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("8d7ed0e0-1804-4283-aa5b-802033b2c918"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b092d122-015f-48f4-80d2-98467bb28f80",
+                            ConcurrencyStamp = "8aea700b-92f3-4ba2-8940-986607ad4bae",
                             CreatedOn = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "VaskoBilkata@gmail.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
                             NormalizedEmail = "VASKOBILKATA@GMAIL.COM",
-                            NormalizedUserName = "VASKOBILKATA",
-                            PasswordHash = "AQAAAAIAAYagAAAAENV0aCIrEnuizNArhKxDepFDCjtdWKBtkOCa3S3TMRRteXlDYoOsT1mvKgKeugUhww==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM1pBqq4PrSFSBnH4suwr+nxMtt0lYqvJ6+yqZKJaUyb3BP2dWmoGUADg/Zcpbej4A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "03f036c2-fc49-4083-ab9f-9d6e9f15db45",
                             TwoFactorEnabled = false,
-                            UserName = "VaskoBilkata"
+                            UserName = "Vasko Bilkata"
                         },
                         new
                         {
                             Id = new Guid("30913bf8-4000-4809-801e-764de3136c0e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ce62c258-29fb-4f21-a038-ccd96bbbec75",
+                            ConcurrencyStamp = "fcae851a-7bce-455c-b1b9-2d5d9f7b6ad7",
                             CreatedOn = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = true,
                             LastEdited = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEIvLCcplsf1D24W8Ufk8ZYFZT6wFV83DdWG0qtYWXBTyizYcQ5p6uahZhkl1F59ntQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKQ5DV+1tD7/TxRzfaP7QGNumwOEjuC48QjOlWL1cZwYZDgVRUNF281vV0gBQL/toQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Michael Caine"
@@ -588,14 +589,14 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("7388ce0f-df30-4686-9e49-46daac4e0292"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c1e89b5-25bf-4afd-96ff-0abe6ee4113f",
+                            ConcurrencyStamp = "a1227b40-41a8-4324-8af4-609127e13218",
                             CreatedOn = new DateTime(2024, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = false,
                             LastEdited = new DateTime(2024, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENp5L8wVhj42k44rYknvoQUsxosHg+SdUG/1xuRds6EW5hhWQo8HupcqR7hvcrLM6w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO4bmllz95Q90vWtgde7islizaJHUHoIwsecrDybw8GtGKQ3PAljo6XLGXOUjdUdqw==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Prince Ferdinand"
@@ -604,14 +605,14 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("b6a98fd4-b8db-4566-ad8c-d7c49f3bd2db"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae348b7b-dddd-433a-ab04-559dc33de084",
-                            CreatedOn = new DateTime(2025, 7, 3, 10, 37, 26, 696, DateTimeKind.Local).AddTicks(9746),
+                            ConcurrencyStamp = "5316f0f1-5d04-4d13-a7b3-da11cf140e4b",
+                            CreatedOn = new DateTime(2025, 7, 3, 10, 30, 25, 664, DateTimeKind.Local).AddTicks(109),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = false,
-                            LastEdited = new DateTime(2025, 7, 10, 10, 37, 26, 696, DateTimeKind.Local).AddTicks(9790),
+                            LastEdited = new DateTime(2025, 7, 10, 10, 30, 25, 664, DateTimeKind.Local).AddTicks(164),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPLKn9QLr6ssGTG1gP0Ja5FtcjL5ZclqyPFnI0QrXvsTsNCYNCbhRe8A/gpKSmbd8w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEiamtQE8cD/Ah9DMoE1FFtFfjRM/TuE5HEEiVRf9Tqiz/NZFLgpcuTZpgIwGpM8Lw==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Burxh califchar"
@@ -620,14 +621,14 @@ namespace Alumni.Data.Migrations
                         {
                             Id = new Guid("6609e8af-abbe-4472-a1ff-ab5fdfb92f80"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c2bc7d4d-0d26-4c5e-8d0b-d1a066cfdb4c",
-                            CreatedOn = new DateTime(2025, 7, 16, 10, 37, 26, 737, DateTimeKind.Local).AddTicks(9923),
+                            ConcurrencyStamp = "8e7eeafc-efe0-4ae0-91d1-fdd801e4e273",
+                            CreatedOn = new DateTime(2025, 7, 16, 10, 30, 25, 709, DateTimeKind.Local).AddTicks(2477),
                             EmailConfirmed = false,
                             ImageUrl = "asd",
                             IsDeleted = true,
-                            LastEdited = new DateTime(2025, 7, 17, 10, 37, 26, 737, DateTimeKind.Local).AddTicks(9972),
+                            LastEdited = new DateTime(2025, 7, 17, 10, 30, 25, 709, DateTimeKind.Local).AddTicks(2541),
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFxxXcXppqey1t6/xCa8nSZFsIBEhtJsQAdkJoXouEVwBzXg2mFsrWhD0y3nv0UeJA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAaSjBtK+no50Rl72E87nlyq1me8O8f1gsVv8AYrMc/C7zG+cMH4mek4ngjpbtlNEg==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "gazelle trueman"

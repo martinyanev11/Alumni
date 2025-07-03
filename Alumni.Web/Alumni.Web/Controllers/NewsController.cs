@@ -29,7 +29,7 @@ namespace Alumni.Web.Controllers
 
 		// News details (public)
 		[AllowAnonymous]
-		public async Task<IActionResult> Details(string id)
+		public async Task<IActionResult> Details(Guid id)
 		{
 			var news = await _newsService.GetNewsByIdAsync(id);
 			if (news == null) return NotFound();
@@ -39,24 +39,24 @@ namespace Alumni.Web.Controllers
 		// Admin-only: Create news
 		[Authorize(Roles = "Admin")]
 		[HttpGet]
-		public IActionResult Create() => View();
+		public IActionResult Add() => View();
 
 		[Authorize(Roles = "Admin")]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create(NewsModel model)
+		public async Task<IActionResult> Add(NewsModel model)
 		{
 			if (!ModelState.IsValid)
 				return View(model);
 
-			await _newsService.CreateNewsAsync(model);
-			return RedirectToAction(nameof(All));
+			await _newsService.AddNewsAsync(model);
+			return RedirectToAction("All");
 		}
 
 		// Admin-only: Edit news
 		[Authorize(Roles = "Admin")]
 		[HttpGet]
-		public async Task<IActionResult> Edit(string id)
+		public async Task<IActionResult> Edit(Guid id)
 		{
 			var news = await _newsService.GetNewsByIdAsync(id);
 			if (news == null) return NotFound();
@@ -71,15 +71,15 @@ namespace Alumni.Web.Controllers
 			if (!ModelState.IsValid)
 				return View(model);
 
-			await _newsService.UpdateNewsAsync(model);
-			return RedirectToAction(nameof(Details), new { id = model.NewsId });
+			await _newsService.EditNewsAsync(model);
+			return RedirectToAction("All");
 		}
 
 		// Admin-only: Delete news
 		[Authorize(Roles = "Admin")]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Delete(string id)
+		public async Task<IActionResult> Delete(Guid id)
 		{
 			await _newsService.DeleteNewsAsync(id);
 			return RedirectToAction(nameof(All));

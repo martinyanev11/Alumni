@@ -1,148 +1,143 @@
 ﻿@model Alumni.Web.ViewModels.AllContentViewModel
+@using Alumni.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
 
-<div class="container">
-    <!-- Hero Section -->
-    <!-- tova da se filtrira kogato si lognat da ne se vijda -->
-    <section class="hero">
-        <h1>Welcome to the Alumni Community</h1>
-        <p>Stay connected, stay informed, and support great causes together.</p>
-        <a href="/Identity/Account/Register" class="btn-primary">Join Us</a>
-    </section>
+    <!-- vzima po chetiri za tova izglejda krivo-->
 
-    <!-- Posts -->
+
+<div class="container py-5">
+
+    <!-- ✅ Hero Section (visible only to anonymous users) -->
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <section class="text-center bg-light rounded p-5 mb-5 shadow-sm">
+            <h1 class="display-4 fw-bold">Welcome to the Alumni Community 🎓</h1>
+            <p class="lead text-muted">Stay connected, stay informed, and support great causes together.</p>
+            <a href="/Identity/Account/Register" class="btn btn-primary btn-lg mt-3">Join Us</a>
+        </section>
+    }
+
+    <!-- ✅ Latest Posts -->
     @if (Model.Posts?.Any() == true)
     {
-        <section class="section">
-            <h2>📘 Latest Posts</h2>
-            <div class="card-grid">
+        <section class="mb-5">
+            <h2 class="mb-4">📘 Latest Posts</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 @foreach (var post in Model.Posts.Take(4))
                 {
-                    <div class="card">
-                        <img src="@post.ImageUrl" alt="Post Image" />
-                        <h3>@post.Title</h3>
-                        <p>@post.Contents?.Substring(0, Math.Min(post.Contents.Length, 100))...</p>
-                        <p class="meta">📅 @post.CreatedOn.ToString("dd MMM yyyy")</p>
-                        <a href="/Posts/Details/@post.PostId">Read More →</a>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="@post.ImageUrl" alt="Post Image" class="card-img-top" style="height: 180px; object-fit: cover;" />
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">@post.Title</h5>
+                                <p class="card-text text-muted mb-2">@post.Contents?.Substring(0, Math.Min(post.Contents.Length, 100))...</p>
+                                <p class="text-secondary small mt-auto">📅 @post.CreatedOn.ToString("dd MMM yyyy")</p>
+                                <a href="/Posts/Details/@post.PostId" class="btn btn-outline-primary btn-sm mt-2">Read More →</a>
+                            </div>
+                        </div>
                     </div>
                 }
             </div>
         </section>
     }
 
-    <!-- News -->
+    <!-- ✅ News Section -->
     @if (Model.News?.Any() == true)
     {
-        <section class="section">
-            <h2>📰 Recent News</h2>
-            <div class="card-grid">
+        <section class="mb-5">
+            <h2 class="mb-4">📰 Recent News</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 @foreach (var news in Model.News.Take(4))
                 {
-                    <div class="card">
-                        <img src="@news.ImageUrl" alt="News Image" />
-                        <h3>@news.Title</h3>
-                        <p>@news.Contents?.Substring(0, Math.Min(news.Contents.Length, 100))...</p>
-                        <p class="meta">📅 @news.CreatedOn.ToString("dd MMM yyyy")</p>
-                        <a href="/News/Details/@news.NewsId">Read More →</a>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="@news.ImageUrl" alt="News Image" class="card-img-top" style="height: 180px; object-fit: cover;" />
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">@news.Title</h5>
+                                <p class="card-text text-muted mb-2">@news.Contents?.Substring(0, Math.Min(news.Contents.Length, 100))...</p>
+                                <p class="text-secondary small mt-auto">📅 @news.CreatedOn.ToString("dd MMM yyyy")</p>
+                                <a href="/News/Details/@news.NewsId" class="btn btn-outline-primary btn-sm mt-2">Read More →</a>
+                            </div>
+                        </div>
                     </div>
                 }
             </div>
         </section>
     }
 
-    <!-- Events -->
+    <!-- ✅ Upcoming Events -->
     @if (Model.Events?.Any() == true)
     {
-        <section class="section">
-            <h2>📅 Upcoming Events</h2>
-            <div class="card-grid">
-                @foreach (var ev in Model.Events.Where(e => e.StartDateTime >= DateTime.Now).OrderBy(e => e.StartDateTime).Take(4))
+        <section class="mb-5">
+            <h2 class="mb-4">📅 Upcoming Events</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                @{
+                    var upcomingEvents = Model.Events
+                    .Where(e => e.StartDateTime >= DateTime.Now)
+                    .OrderBy(e => e.StartDateTime)
+                    .Take(4)
+                    .ToList();
+                }
+
+                @if (upcomingEvents.Any())
                 {
-                    <div class="card">
-                        <img src="@ev.ImageUrl" alt="Event Image" />
-                        <h3>@ev.Title</h3>
-                        <p>@ev.Contents?.Substring(0, Math.Min(ev.Contents.Length, 100))...</p>
-                        <p class="meta">📍 @* trqbva da se dobavi @ev.Location *@ | 🗓 @ev.StartDateTime.ToString("dd MMM yyyy")</p>
-                        <a href="/Events/Details/@ev.EventId">View Details →</a>
+                    @foreach (var ev in upcomingEvents)
+                    {
+                        <div class="col">
+                            <div class="card h-100 shadow-sm border-0">
+                                <img src="@ev.ImageUrl" alt="Event Image" class="card-img-top" style="height: 180px; object-fit: cover;" />
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">@ev.Title</h5>
+                                    <p class="card-text text-muted mb-2">
+                                        @ev.Contents?.Substring(0, Math.Min(ev.Contents.Length, 100))...
+                                    </p>
+                                    <p class="text-secondary small">
+                                        🗓 @ev.StartDateTime.ToString("dd MMM yyyy")
+                                    </p>
+                                    <a href="/Events/Details/@ev.EventId" class="btn btn-outline-primary btn-sm mt-auto">View Details →</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col">
+                        <div class="alert alert-info text-center w-100">
+                            📭 No upcoming events.
+                        </div>
                     </div>
                 }
+
             </div>
         </section>
     }
 
-    <!-- Charity Donations -->
+    <!-- ✅ Charity Donations -->
     @if (Model.CharityDonations?.Any() == true)
     {
-        <section class="section">
-            <h2>❤️ Charity Campaigns</h2>
-            <div class="card-grid">
+        <section class="mb-5">
+            <h2 class="mb-4">❤️ Charity Campaigns</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 @foreach (var cd in Model.CharityDonations.Take(4))
                 {
-                    <div class="card">
-                        <img src="@cd.ImageUrl" alt="Charity Image" />
-                        <h3>@cd.Title</h3>
-                        <p>@cd.Content?.Substring(0, Math.Min(cd.Content.Length, 100))...</p>
-                        <p><strong>Raised:</strong> $@cd.CurrentlyRaisedDonations / $@cd.DonationGoal</p>
-                        <a href="/Charity/Details/@cd.CharityDonationId">Contribute →</a>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="@cd.ImageUrl" alt="Charity Image" class="card-img-top" style="height: 180px; object-fit: cover;" />
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">@cd.Title</h5>
+                                <p class="card-text text-muted mb-2">@cd.Content?.Substring(0, Math.Min(cd.Content.Length, 100))...</p>
+                                <p class="text-secondary small">
+                                    💰 Raised: $@cd.CurrentlyRaisedDonations.ToString("N2") / $@cd.DonationGoal.ToString("N2")
+                                </p>
+                                <a href="/Charity/Details/@cd.CharityDonationId" class="btn btn-outline-primary btn-sm mt-auto">Contribute →</a>
+                            </div>
+                        </div>
                     </div>
                 }
             </div>
         </section>
     }
+
 </div>
-
-
-
-
-@* @model Alumni.Web.ViewModels.AllContentViewModel
- 
-<div class="content-section">
-    <h2>Posts</h2>
-    @foreach (var post in Model.Posts)
-    {
-        <div class="card">
-            <h3>@post.Title</h3>
-            <p>@post.Contents</p>
-            <img src="@post.ImageUrl" alt="Post Image" />
-            <p><strong>Created:</strong> @post.CreatedOn.ToString("dd MMM yyyy")</p>
-            <p><strong>Last Edited:</strong> @post.LastEdited.ToString("dd MMM yyyy")</p>
-        </div>
-    }
-
-    <h2>News</h2>
-    @foreach (var news in Model.News)
-    {
-        <div class="card">
-            <h3>@news.Title</h3>
-            <p>@news.Contents</p>
-            <img src="@news.ImageUrl" alt="News Image" />
-            <p><strong>Created:</strong> @news.CreatedOn.ToString("dd MMM yyyy")</p>
-            <p><strong>Last Edited:</strong> @news.LastEdited.ToString("dd MMM yyyy")</p>
-        </div>
-    }
-
-    <h2>Events</h2>
-    @foreach (var ev in Model.Events)
-    {
-        <div class="card">
-            <h3>@ev.Title</h3>
-            <p>@ev.Contents</p>
-            <img src="@ev.ImageUrl" alt="Event Image" />
-            <p><strong>Created:</strong> @ev.CreatedOn.ToString("dd MMM yyyy")</p>
-            <p><strong>Last Edited:</strong> @ev.LastEdited.ToString("dd MMM yyyy")</p>
-        </div>
-    }
-
-    <h2>Charity Donations</h2>
-    @foreach (var cd in Model.CharityDonations)
-    {
-        <div class="card">
-            <h3>@cd.Title</h3>
-            <p>@cd.Content</p>
-            <img src="@cd.ImageUrl" alt="Charity Image" />
-            <p><strong>Goal:</strong> @cd.DonationGoal</p>
-            <p><strong>Raised:</strong> @cd.CurrentlyRaisedDonations</p>
-            <p><strong>Created:</strong> @cd.CreatedOn.ToString("dd MMM yyyy")</p>
-            <p><strong>Last Edited:</strong> @cd.LastEdited.ToString("dd MMM yyyy")</p>
-        </div>
-    }
-</div> *@

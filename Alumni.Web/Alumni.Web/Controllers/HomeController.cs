@@ -4,6 +4,7 @@ using Alumni.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 
 namespace Alumni.Web.Controllers
@@ -38,20 +39,6 @@ namespace Alumni.Web.Controllers
         {
             return View();
         }
-
-		public async Task<IActionResult> IsUserInRole(string roleName)
-		{
-			if (User.Identity.IsAuthenticated)
-			{
-				var user = await _userManager.GetUserAsync(User);
-				if (user != null)
-				{
-					bool isInRole = await _userManager.IsInRoleAsync(user, roleName);
-					return Json(isInRole); // Returns true or false as JSON
-				}
-			}
-			return Json(false); // Not authenticated or user not found
-		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error(int statusCode)

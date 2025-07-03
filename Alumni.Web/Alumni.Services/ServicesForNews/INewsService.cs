@@ -11,11 +11,11 @@ namespace Alumni.Services.ServicesForNews
 	{
 		Task<IEnumerable<NewsModel>> GetAllNewsAsync();
 
-		Task<NewsModel> GetNewsByIdAsync(string id);
+		Task<NewsModel> GetNewsByIdAsync(Guid id);
 
-		Task CreateNewsAsync(NewsModel model);
+		Task AddNewsAsync(NewsModel model);
 
-		Task UpdateNewsAsync(NewsModel model);
-		Task DeleteNewsAsync(string id);
+		Task EditNewsAsync(NewsModel model);
+		Task DeleteNewsAsync(Guid id);
 	}
 }

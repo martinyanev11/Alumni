@@ -33,7 +33,7 @@ namespace Alumni.Services.ServicesForNews
 				.ToListAsync();
 		}
 
-		public async Task<NewsModel> GetNewsByIdAsync(string id)
+		public async Task<NewsModel> GetNewsByIdAsync(Guid id)
 		{
 			var news = await _dbContext.News.FindAsync(id);
 			if (news == null)
@@ -51,7 +51,7 @@ namespace Alumni.Services.ServicesForNews
 			};
 		}
 
-		public async Task CreateNewsAsync(NewsModel model)
+		public async Task AddNewsAsync(NewsModel model)
 		{
 			var news = new News
 			{
@@ -66,7 +66,7 @@ namespace Alumni.Services.ServicesForNews
 			await _dbContext.SaveChangesAsync();
 		}
 
-		public async Task UpdateNewsAsync(NewsModel model)
+		public async Task EditNewsAsync(NewsModel model)
 		{
 			var news = await _dbContext.News.FindAsync(model.NewsId);
 			if (news != null)
@@ -80,7 +80,7 @@ namespace Alumni.Services.ServicesForNews
 			}
 		}
 
-		public async Task DeleteNewsAsync(string id)
+		public async Task DeleteNewsAsync(Guid id)
 		{
 			var news = await _dbContext.News.FindAsync(id);
 			if (news != null)
