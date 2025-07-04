@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alumni.Services.ServicesForEvents.Models
 {
-	public class EventViewModel
+	public class EventViewModelForService
 	{
 		public DateTime CreatedOn { get; set; }
 		public DateTime LastEdited { get; set; }

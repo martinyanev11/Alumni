@@ -9,10 +9,10 @@ namespace Alumni.Services.ServicesForEvents
 {
 	public interface IEventServices
 	{
-		Task<List<EventViewModel>> GetAllEventsAsync();
-		Task<EventViewModel> GetEventByIdAsync(int eventId);
-		Task AddEventAsync(EventViewModel model);
-		Task EditEventAsync(EventViewModel model);
-		Task DeleteEventAsync(int eventId);
+		Task<List<EventViewModelForService>> GetAllEventsAsync();
+		Task<EventViewModelForService> GetEventByIdAsync(Guid eventId);
+		Task AddEventAsync(EventViewModelForService model);
+		Task EditEventAsync(EventViewModelForService model);
+		Task DeleteEventAsync(Guid eventId);
 	}
 }

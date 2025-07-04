@@ -18,10 +18,10 @@ namespace Alumni.Services.ServicesForEvents
 			_context = context;
 		}
 
-		public async Task<List<EventViewModel>> GetAllEventsAsync()
+		public async Task<List<EventViewModelForService>> GetAllEventsAsync()
 		{
 			return await _context.Events
-				.Select(e => new EventViewModel
+				.Select(e => new EventViewModelForService
 				{
 					EventId = e.EventId,
 					Title = e.Title,
@@ -34,12 +34,12 @@ namespace Alumni.Services.ServicesForEvents
 				}).ToListAsync();
 		}
 
-		public async Task<EventViewModel> GetEventByIdAsync(int eventId)
+		public async Task<EventViewModelForService> GetEventByIdAsync(Guid eventId)
 		{
 			var e = await _context.Events.FindAsync(eventId);
 			if (e == null) return null;
 
-			return new EventViewModel
+			return new EventViewModelForService
 			{
 				EventId = e.EventId,
 				Title = e.Title,
@@ -52,7 +52,7 @@ namespace Alumni.Services.ServicesForEvents
 			};
 		}
 
-		public async Task AddEventAsync(EventViewModel model)
+		public async Task AddEventAsync(EventViewModelForService model)
 		{
 			var newEvent = new Data.Models.Event
 			{
@@ -69,7 +69,7 @@ namespace Alumni.Services.ServicesForEvents
 			await _context.SaveChangesAsync();
 		}
 
-		public async Task EditEventAsync(EventViewModel model)
+		public async Task EditEventAsync(EventViewModelForService model)
 		{
 			var existingEvent = await _context.Events.FindAsync(model.EventId);
 			if (existingEvent == null) return;
@@ -85,7 +85,7 @@ namespace Alumni.Services.ServicesForEvents
 			await _context.SaveChangesAsync();
 		}
 
-		public async Task DeleteEventAsync(int eventId)
+		public async Task DeleteEventAsync(Guid eventId)
 		{
 			var existingEvent = await _context.Events.FindAsync(eventId);
 			if (existingEvent == null) return;

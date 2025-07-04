@@ -3,7 +3,7 @@ using Alumni.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using ServiceEventVM = Alumni.Services.ServicesForEvents.Models.EventViewModel; 
+using ServiceEventVM = Alumni.Services.ServicesForEvents.Models.EventViewModelForService; 
 
 namespace Alumni.Web.Controllers
 {
@@ -66,7 +66,7 @@ namespace Alumni.Web.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Edit(int id)
+		public async Task<IActionResult> Edit(Guid id)
 		{
 			var serviceModel = await _eventService.GetEventByIdAsync(id);
 			if (serviceModel == null) return NotFound();
@@ -111,7 +111,7 @@ namespace Alumni.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Delete(int id)
+		public async Task<IActionResult> Delete(Guid id)
 		{
 			await _eventService.DeleteEventAsync(id);
 			return RedirectToAction(nameof(Events));
