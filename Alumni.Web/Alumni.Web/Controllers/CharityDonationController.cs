@@ -1,11 +1,13 @@
 ﻿using Alumni.Data.Data;
 using Alumni.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alumni.Web.Controllers
 {
 	// admin - add charity donation, edit charity donation, delete charity donation
+	[Authorize]
 	public class CharityDonationController : Controller
     {
 		private readonly AlumniDbContext _context;

@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alumni.Web.Controllers
 {
-	 //admin - add news, edit news, delete news
-
-
+	//admin - add news, edit news, delete news
+	[Authorize]
 	public class NewsController : Controller
 	{
 		private readonly INewsService _newsService;

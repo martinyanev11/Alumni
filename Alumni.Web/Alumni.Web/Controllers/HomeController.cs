@@ -1,6 +1,7 @@
 using Alumni.Data.Data;
 using Alumni.Data.Models;
 using Alumni.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -9,8 +10,8 @@ using System.Security.Claims;
 
 namespace Alumni.Web.Controllers
 {
-    
-    public class HomeController : Controller
+    [AllowAnonymous]
+	public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AlumniDbContext _context;

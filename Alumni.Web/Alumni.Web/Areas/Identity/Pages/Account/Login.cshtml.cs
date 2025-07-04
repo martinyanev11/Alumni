@@ -18,6 +18,7 @@ using Alumni.Data.Models;
 
 namespace Alumni.Web.Areas.Identity.Pages.Account
 {
+    [Route("/Account/Login")]
     public class LoginModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;

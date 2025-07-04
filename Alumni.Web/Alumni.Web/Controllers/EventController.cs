@@ -1,11 +1,13 @@
-﻿using Alumni.Web.ViewModels; 
-using Alumni.Services.ServicesForEvents;
+﻿using Alumni.Services.ServicesForEvents;
+using Alumni.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using ServiceEventVM = Alumni.Services.ServicesForEvents.Models.EventViewModel; 
 
 namespace Alumni.Web.Controllers
 {
+	[Authorize]
 	public class EventController : Controller
 	{
 		private readonly IEventServices _eventService;
@@ -15,6 +17,7 @@ namespace Alumni.Web.Controllers
 			_eventService = eventService;
 		}
 
+		[AllowAnonymous]
 		public async Task<IActionResult> Events()
 		{
 			var serviceEvents = await _eventService.GetAllEventsAsync();

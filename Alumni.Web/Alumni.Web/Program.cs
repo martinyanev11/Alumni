@@ -25,6 +25,12 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
 // Add Authorization (required for [Authorize], UseAuthorization, etc.)
 builder.Services.AddAuthorization();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+	options.LoginPath = "/Identity/Account/Login";         
+	options.AccessDeniedPath = "/Identity/Account/AccessDenied"; 
+});
+
 // MVC and Razor Pages
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
