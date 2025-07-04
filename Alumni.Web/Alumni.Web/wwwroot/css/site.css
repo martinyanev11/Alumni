@@ -8,7 +8,6 @@ html {
   }
 }
 
-
 html {
   position: relative;
   min-height: 100%;
@@ -18,9 +17,7 @@ body {
   margin-bottom: 60px;
 }
 
-
-
-.container {
+/*.container {
     max-width: 1140px;
     margin: auto;
     padding: 2rem;
@@ -43,9 +40,9 @@ body {
     .hero p {
         font-size: 1.2rem;
         color: #555;
-    }
+    }*/
 
-.btn-primary {
+/*.btn-primary {
     display: inline-block;
     margin-top: 1.5rem;
     background-color: #3366cc;
@@ -53,9 +50,9 @@ body {
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
     text-decoration: none;
-}
+}*/
 
-.section {
+/*.section {
     margin-bottom: 3rem;
 }
 
@@ -105,4 +102,4 @@ body {
         color: #3366cc;
         font-weight: 500;
         text-decoration: none;
-    }
+    }*/
