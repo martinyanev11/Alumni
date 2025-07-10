@@ -1,76 +1,37 @@
-﻿@model Alumni.Web.ViewModels.GuestViewModel
+﻿@model IEnumerable<Alumni.Data.Models.HelpRequest>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Help Requests";
 }
 
-<div class="container mt-5">
+<h1 class="mb-4">Help Requests</h1>
 
-    <!-- Hero Section -->
-    <div class="jumbotron text-center mb-5">
-        <h1 class="display-4">Welcome to the Alumni Network</h1>
-        <p class="lead">Stay connected, informed, and involved with our alumni community.</p>
-        <a href="/About" class="btn btn-primary btn-lg">Learn More</a>
+<p>
+    <a asp-action="Create" asp-controller="Guest" class="btn btn-success">Ask for Help</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No help requests yet.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var request in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <a asp-action="Details" asp-route-id="@request.Id" class="text-decoration-none text-dark">
+                    <div class="card shadow-sm h-100 border-0" style="cursor: pointer;">
+                        <div class="card-body">
+                            <h5 class="card-title">@request.Title</h5>
+                            <p class="card-text text-muted mb-1">
+                                @request.Description?.Substring(0, Math.Min(100, request.Description.Length))...
+                            </p>
+                            <small class="text-muted">Posted on @request.CreatedOn.ToShortDateString()</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
     </div>
-
-    <!-- News Section -->
-    <section>
-        <h2 class="mb-4">Latest News</h2>
-        <div class="row">
-            @foreach (var item in Model.News.Take(3))
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">@item.Title</h5>
-                            <p class="card-text text-truncate">@item.Contents</p>
-                            <a asp-controller="News" asp-action="NewsDetails" asp-route-newsId="@item.NewsId" class="btn btn-outline-primary mt-auto">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="text-end">
-            <a asp-controller="News" asp-action="Index" class="btn btn-link">View all news</a>
-        </div>
-    </section>
-
-    <!-- Events Section -->
-    <section class="mt-5">
-        <h2 class="mb-4">Upcoming Events</h2>
-        <div class="row">
-            @foreach (var item in Model.Events.Take(3))
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">@item.Title</h5>
-                            <p class="card-text text-truncate">@item.Contents</p>
-                            <a asp-controller="Events" asp-action="Details" asp-route-id="@item.EventId" class="btn btn-outline-secondary mt-auto">Learn more</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="text-end">
-            <a asp-controller="Events" asp-action="Index" class="btn btn-link">View all events</a>
-        </div>
-    </section>
-
-    <!-- About Alumni Network -->
-    <section class="mt-5">
-        <h2>About Our Alumni Network</h2>
-        <p>
-            Our alumni network helps former students stay connected with the university and each other.
-            We host events, share updates, and provide opportunities for collaboration and contribution.
-        </p>
-        <p>
-            Whether you're reconnecting with friends, expanding your professional network, or giving back
-            to the community — we’re here to support you.
-        </p>
-        <a href="/About" class="btn btn-primary">Get to Know Us</a>
-    </section>
-
-</div>
+}

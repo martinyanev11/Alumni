@@ -1,35 +1,67 @@
-﻿using Alumni.Web.ViewModels;
+﻿using Alumni.Data.Models;
+using Alumni.Services.ServicesForGuest;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System;
 
 namespace Alumni.Web.Controllers
 {
+    [Authorize] // Optional: ensures only logged-in users can respond
     public class GuestController : Controller
     {
-        // chesno neznam za kakvo e tova
+        private readonly IGuestServices _guestService;
+
+        public GuestController(IGuestServices guestService)
+        {
+            _guestService = guestService;
+        }
+
         public IActionResult Guest()
         {
-            var news = new List<NewsViewModel>
-            {
-                new NewsViewModel { Title = "News 1", Contents = "Content of news 1", ImageUrl = "/images/event3.jpg" },
-                new NewsViewModel { Title = "News 2", Contents = "Content of news 2", ImageUrl = "/images/event3.jpg" },
-                new NewsViewModel { Title = "News 3", Contents = "Content of news 3", ImageUrl = "/images/event3.jpg" }
-            };
+            var requests = _guestService.GetAllRequests();
+            return View(requests); // Views/Guest/Guest.cshtml
+        }
 
-            var events = new List<EventViewModel>
-            {
-                new EventViewModel { Title = "Event 1", Contents = "Content of event 1", ImageUrl = "/images/event3.jpg" },
-                new EventViewModel { Title = "Event 2", Contents = "Content of event 2", ImageUrl = "/images/event3.jpg" },
-                new EventViewModel { Title = "Event 3", Contents = "Content of event 3", ImageUrl = "/images/event3.jpg" }
-            };
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-            var viewModel = new GuestViewModel
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(HelpRequest model)
+        {
+            if (ModelState.IsValid)
             {
-                News = news,
-                Events = events
-            };
+                _guestService.CreateRequest(model);
+                return RedirectToAction("Guest");
+            }
+            return View(model);
+        }
 
-            return View(viewModel);
+        public IActionResult Details(int id)
+        {
+            var request = _guestService.GetRequestById(id);
+            if (request == null)
+                return NotFound();
+
+            return View(request); // Views/Guest/Details.cshtml
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddResponse(int id, string content)
+        {
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                ModelState.AddModelError("Content", "Response content cannot be empty.");
+                return RedirectToAction("Details", new { id });
+            }
+
+            string responderEmail = User.Identity?.Name ?? "Anonymous";
+            _guestService.AddResponse(id, content, responderEmail);
+
+            return RedirectToAction("Details", new { id });
         }
     }
 }

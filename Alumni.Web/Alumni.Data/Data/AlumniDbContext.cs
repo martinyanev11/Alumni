@@ -21,6 +21,9 @@ namespace Alumni.Data.Data
         public DbSet<UserEvent> UsersEvents { get; set; } = null!;
         public DbSet<Comment> Comments { get; set; } = null!;
         public DbSet<CharityDonationUser> CharityDonationsUsers { get; set; } = null!;
+        public DbSet<HelpRequest> HelpRequests { get; set; }
+        public DbSet<HelpResponse> HelpResponses { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

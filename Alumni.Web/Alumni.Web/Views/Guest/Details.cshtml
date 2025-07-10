@@ -1,0 +1,42 @@
+﻿@model Alumni.Data.Models.HelpRequest
+
+@{
+    ViewData["Title"] = "Help Request Details";
+}
+
+<h2>@Model.Title</h2>
+<p><strong>Posted:</strong> @Model.CreatedOn.ToShortDateString()</p>
+<p>@Model.Description</p>
+
+<hr />
+
+<h4>Responses</h4>
+@if (!Model.Responses.Any())
+{
+    <p><em>No responses yet.</em></p>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var response in Model.Responses)
+        {
+            <li class="list-group-item">
+                <p>@response.Content</p>
+                <small class="text-muted">By @response.ResponderName on @response.CreatedOn</small>
+            </li>
+        }
+    </ul>
+}
+
+<hr />
+
+<h4>Add a Response</h4>
+<form asp-action="AddResponse" asp-controller="Guest" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div class="form-group">
+        <textarea name="content" class="form-control" rows="3" placeholder="Write your response..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Response</button>
+</form>

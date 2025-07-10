@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Alumni.Data.Models.HelpRequest>
+
+@{
+    ViewData["Title"] = "Help Requests";
+}
+
+<h1>Help Requests</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Ask for Help</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No help requests yet.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Posted On</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.Title</td>
+                    <td>@request.Description?.Substring(0, Math.Min(100, request.Description.Length))...</td>
+                    <td>@request.CreatedOn.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@request.Id" class="btn btn-info btn-sm">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
