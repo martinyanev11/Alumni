@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Data.Models", "Alumn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alumni.Services", "Alumni.Services\Alumni.Services.csproj", "{EFDE8060-54B7-48F3-AF28-5959D454557F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alumni.Tests", "Alumni.Tests\Alumni.Tests.csproj", "{883DD9A0-7D54-428D-894E-DED2CCD67C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EFDE8060-54B7-48F3-AF28-5959D454557F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFDE8060-54B7-48F3-AF28-5959D454557F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFDE8060-54B7-48F3-AF28-5959D454557F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{883DD9A0-7D54-428D-894E-DED2CCD67C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{883DD9A0-7D54-428D-894E-DED2CCD67C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{883DD9A0-7D54-428D-894E-DED2CCD67C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{883DD9A0-7D54-428D-894E-DED2CCD67C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
