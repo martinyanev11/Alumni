@@ -62,6 +62,19 @@ namespace Alumni.Tests
         }
 
         [Fact]
+        public void GetAllCharityDonations_ReturnsEmpty_WhenNoDonationsExist()
+        {
+            // Arrange
+            var service = GetServiceWithInMemoryDb();
+
+            // Act
+            var result = service.GetAllCharityDonations();
+
+            // Assert
+            Assert.Empty(result);
+        }
+
+        [Fact]
         public async Task AddCharityDonationAsync_AddsDonationCorrectly()
         {
             // Arrange
@@ -120,6 +133,113 @@ namespace Alumni.Tests
             // Assert
             var updated = await context.CharityDonations.FindAsync(donationId);
             Assert.Equal(250m, updated.CurrentlyRaisedDonations);
+        }
+
+        [Fact]
+        public async Task DonateAsync_Throws_WhenDonationDoesNotExist()
+        {
+            // Arrange
+            var service = GetServiceWithInMemoryDb();
+            var nonExistentId = Guid.NewGuid();
+
+            // Act & Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(async () =>
+            {
+                await service.DonateAsync(nonExistentId, 100m);
+            });
+        }
+
+        [Fact]
+        public async Task DonateAsync_Throws_WhenAmountIsNegative()
+        {
+            // Arrange
+            var service = GetServiceWithInMemoryDb();
+            var context = service.GetType().GetField("_context", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(service) as AlumniDbContext;
+            var donation = new CharityDonation
+            {
+                CharityDonationId = Guid.NewGuid(),
+                Title = "Donation",
+                Content = "Content",
+                DonationGoal = 1000m,
+                CurrentlyRaisedDonations = 0m,
+                CreatedOn = DateTime.UtcNow,
+                ImageUrl = "img.jpg"
+            };
+            context!.CharityDonations.Add(donation);
+            context.SaveChanges();
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(async () =>
+            {
+                await service.DonateAsync(donation.CharityDonationId, -50m);
+            });
+        }
+
+        [Fact]
+        public async Task DonateAsync_CapsAtDonationGoal()
+        {
+            // Arrange
+            var service = GetServiceWithInMemoryDb();
+            var context = service.GetType().GetField("_context", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(service) as AlumniDbContext;
+            var donation = new CharityDonation
+            {
+                CharityDonationId = Guid.NewGuid(),
+                Title = "Donation",
+                Content = "Content",
+                DonationGoal = 100m,
+                CurrentlyRaisedDonations = 90m,
+                CreatedOn = DateTime.UtcNow,
+                ImageUrl = "img.jpg"
+            };
+            context!.CharityDonations.Add(donation);
+            context.SaveChanges();
+            // Act
+            await service.DonateAsync(donation.CharityDonationId, 20m); // Should cap at 100
+            // Assert
+            var updated = context.CharityDonations.Find(donation.CharityDonationId);
+            Assert.NotNull(updated);
+            Assert.Equal(100m, updated.CurrentlyRaisedDonations);
+        }
+
+        [Fact]
+        public async Task AddCharityDonationAsync_SetsDefaultValues()
+        {
+            // Arrange
+            var service = GetServiceWithInMemoryDb();
+            var context = service.GetType().GetField("_context", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(service) as AlumniDbContext;
+            var formModel = new CharityDonationFormModel
+            {
+                Title = "Default Test",
+                Content = "Content",
+                ImageUrl = "img.jpg",
+                DonationGoal = 100
+            };
+            // Act
+            await service.AddCharityDonationAsync(formModel);
+            // Assert
+            var donation = context!.CharityDonations.FirstOrDefault(d => d.Title == "Default Test");
+            Assert.NotNull(donation);
+            Assert.Equal(0, donation.CurrentlyRaisedDonations);
+            Assert.True(donation.CreatedOn <= DateTime.UtcNow);
+        }
+
+        [Fact]
+        public async Task AddCharityDonationAsync_Throws_WhenDonationGoalIsZeroOrNegative()
+        {
+            // Arrange
+            var service = GetServiceWithInMemoryDb();
+            var context = service.GetType().GetField("_context", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(service) as AlumniDbContext;
+            var formModel = new CharityDonationFormModel
+            {
+                Title = "Invalid Goal",
+                Content = "Content",
+                ImageUrl = "img.jpg",
+                DonationGoal = 0
+            };
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(async () =>
+            {
+                await service.AddCharityDonationAsync(formModel);
+            });
         }
     }
 }
