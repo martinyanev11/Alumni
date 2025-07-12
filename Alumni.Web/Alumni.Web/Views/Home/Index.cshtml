@@ -3,12 +3,11 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<User> SignInManager
 
-    <!-- vzima po chetiri za tova izglejda krivo-->
+    @* trqbva da izmislq neshto za vuprosa s posts *@
 
 
 <div class="container py-5">
 
-    <!-- ✅ Hero Section (visible only to anonymous users) -->
     @if (!SignInManager.IsSignedIn(User))
     {
         <section class="text-center bg-light rounded p-5 mb-5 shadow-sm">
@@ -18,12 +17,11 @@
         </section>
     }
 
-    <!-- ✅ Latest Posts -->
     @if (Model.Posts?.Any() == true)
     {
         <section class="mb-5">
             <h2 class="mb-4">📘 Latest Posts</h2>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 @(Model.Posts.Count < 4 ? "justify-content-center" : "")">
                 @foreach (var post in Model.Posts.Take(4))
                 {
                     <div class="col">
@@ -42,12 +40,11 @@
         </section>
     }
 
-    <!-- ✅ News Section -->
     @if (Model.News?.Any() == true)
     {
         <section class="mb-5">
             <h2 class="mb-4">📰 Recent News</h2>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 @(Model.News.Count < 4 ? "justify-content-center" : "")">
                 @foreach (var news in Model.News.Take(4))
                 {
                     <div class="col">
@@ -66,12 +63,11 @@
         </section>
     }
 
-    <!-- ✅ Upcoming Events -->
     @if (Model.Events?.Any() == true)
     {
         <section class="mb-5">
             <h2 class="mb-4">📅 Upcoming Events</h2>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 @(Model.Events.Count < 4 ? "justify-content-center" : "")">
                 @{
                     var upcomingEvents = Model.Events
                     .Where(e => e.StartDateTime >= DateTime.Now)
@@ -114,12 +110,11 @@
         </section>
     }
 
-    <!-- ✅ Charity Donations -->
     @if (Model.CharityDonations?.Any() == true)
     {
         <section class="mb-5">
             <h2 class="mb-4">❤️ Charity Campaigns</h2>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 @(Model.CharityDonations.Count < 4 ? "justify-content-center" : "")">
                 @foreach (var cd in Model.CharityDonations.Take(4))
                 {
                     <div class="col">
@@ -131,7 +126,7 @@
                                 <p class="text-secondary small">
                                     💰 Raised: $@cd.CurrentlyRaisedDonations.ToString("N2") / $@cd.DonationGoal.ToString("N2")
                                 </p>
-                                <a href="/Charity/Details/@cd.CharityDonationId" class="btn btn-outline-primary btn-sm mt-auto">Contribute →</a>
+                                <a href="/CharityDonation/Details/@cd.CharityDonationId" class="btn btn-outline-primary btn-sm mt-auto">Contribute →</a>
                             </div>
                         </div>
                     </div>
