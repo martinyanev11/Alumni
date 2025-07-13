@@ -12,6 +12,21 @@
             <a href="@Url.Action("Add", "Event")" class="btn btn-success">+ Add New Event</a>
         }
     </div>
+
+    <form method="get" asp-action="Events" class="mb-4 text-end">
+        <div class="input-group" style="max-width: 250px; margin-left: auto;">
+            <select class="form-select" name="year" onchange="this.form.submit()">
+                <option value="">-- All Years --</option>
+                @foreach (var y in ViewBag.Years as List<int>)
+                {
+                    string selected = Context.Request.Query["year"] == y.ToString() ? "selected" : "";
+                    <option value="@y" selected="@selected">@y</option>
+                }
+            </select>
+            <button type="submit" class="btn btn-outline-secondary">Filter</button>
+        </div>
+    </form>
+
     <p class="text-muted fs-5 text-center mb-5">Join upcoming alumni events and relive great memories.</p>
 
     @if (!Model.Any())

@@ -32,7 +32,8 @@ namespace Alumni.Services.ServicesForEvents
 					StartDateTime = e.StartDateTime,
 					EndDateTime = e.EndDateTime
 				}).ToListAsync();
-		}
+            
+        }
 
 		public async Task<EventViewModelForService> GetEventByIdAsync(Guid eventId)
 		{

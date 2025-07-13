@@ -7,6 +7,7 @@ using Alumni.Services.ServicesForGuest;
 using Alumni.Services.ServicesForNews;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +42,12 @@ builder.Services.AddRazorPages();
 
 // Add development exception filter
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    // Add a global filter for Validate Antiforgery Token
+    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+});
 
 // Register your custom services
 builder.Services.AddScoped<INewsService, NewsServices>();

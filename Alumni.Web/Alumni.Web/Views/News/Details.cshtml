@@ -4,22 +4,27 @@
     ViewData["Title"] = "News Details";
 }
 
-<div class="container mt-5">
-    <h2 class="mb-3">@Model.Title</h2>
+<div class="container py-5">
+    <div class="mb-4">
+        <h1 class="display-5 fw-bold text-primary">@Model.Title</h1>
+        <div class="text-muted small mt-2">
+            <i class="bi bi-calendar-plus"></i> Created: @Model.CreatedOn.ToString("dd MMM yyyy") |
+            <i class="bi bi-pencil-square"></i> Last Edited: @Model.LastEdited.ToString("dd MMM yyyy")
+        </div>
+    </div>
 
     @if (!string.IsNullOrEmpty(Model.ImageUrl))
     {
-        <img src="@Model.ImageUrl" alt="News Image" class="img-fluid mb-4" />
+        <div class="mb-4 text-center">
+            <img src="@Model.ImageUrl" alt="News Image" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: cover;" />
+        </div>
     }
 
-    <p class="text-muted">
-        Created: @Model.CreatedOn.ToString("dd MMM yyyy") |
-        Last Edited: @Model.LastEdited.ToString("dd MMM yyyy")
-    </p>
-
-    <div class="mb-5 fs-5">
-        @Model.Contents
+    <div class="fs-5 lh-lg mb-5">
+        @Html.Raw(Model.Contents)
     </div>
 
-    <a asp-action="All" class="btn btn-outline-secondary">Back to News</a>
+    <a asp-action="All" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left-circle me-1"></i> Back to News
+    </a>
 </div>

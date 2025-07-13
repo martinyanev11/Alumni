@@ -17,25 +17,34 @@ namespace Alumni.Web.Controllers
 			_eventService = eventService;
 		}
 
-		[AllowAnonymous]
-		public async Task<IActionResult> Events()
+		public async Task<IActionResult> Events(int? year)
 		{
-			var serviceEvents = await _eventService.GetAllEventsAsync();
+            var allEvents = await _eventService.GetAllEventsAsync();
 
-			var webEvents = serviceEvents.ConvertAll(e => new EventViewModel
-			{
-				EventId = e.EventId,
-				Title = e.Title,
-				Contents = e.Contents,
-				CreatedOn = e.CreatedOn,
-				LastEdited = e.LastEdited,
-				ImageUrl = e.ImageUrl,
-				StartDateTime = e.StartDateTime,
-				EndDateTime = e.EndDateTime
-			});
+            var filteredEvents = year.HasValue
+                ? allEvents.Where(e => e.StartDateTime.Year == year.Value).ToList()
+                : allEvents;
 
-			return View(webEvents);
-		}
+            ViewBag.Years = allEvents
+                .Select(e => e.StartDateTime.Year)
+                .Distinct()
+                .OrderByDescending(y => y)
+                .ToList();
+
+            var webEvents = filteredEvents.ConvertAll(e => new EventViewModel
+            {
+                EventId = e.EventId,
+                Title = e.Title,
+                Contents = e.Contents,
+                CreatedOn = e.CreatedOn,
+                LastEdited = e.LastEdited,
+                ImageUrl = e.ImageUrl,
+                StartDateTime = e.StartDateTime,
+                EndDateTime = e.EndDateTime
+            });
+
+            return View(webEvents);
+        }
 
 		[HttpGet]
 		public IActionResult Add() => View();
